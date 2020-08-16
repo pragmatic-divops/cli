@@ -1,0 +1,6 @@
+_extends: .github
+repository:
+  name: cli
+  description: cli for various organization tools
+  homepage: 'https://github.com/pragmatic-divops/cli#readme'
+  private: false
