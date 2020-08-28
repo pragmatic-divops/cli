@@ -47,6 +47,7 @@
     "@travi/github-scaffolder": "5.2.0",
     "@travi/javascript-scaffolder": "11.2.1",
     "@travi/project-scaffolder": "8.10.5",
+    "source-map-support": "0.5.19",
     "update-notifier": "4.1.0",
     "yargs": "15.4.1"
   },
