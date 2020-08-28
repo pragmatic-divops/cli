@@ -3,6 +3,8 @@ name: Node.js CI
   push:
     branches:
       - master
+      - alpha
+      - beta
   pull_request:
     types:
       - opened

@@ -8,6 +8,6 @@ exports.settings = {
 };
 
 exports.plugins = [
-  'remark-preset-lint-travi',
+  '@pragmatic-divops/remark-preset',
   ['remark-toc', {tight: true}]
 ];
