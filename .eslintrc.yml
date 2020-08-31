@@ -1,4 +1,4 @@
 extends:
   - '@pragmatic-divops'
   - '@travi/mocha'
-  - '@form8ion/cucumber'
+  - '@pragmatic-divops/cucumber'
