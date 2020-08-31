@@ -4,13 +4,15 @@ import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
 import {prompt} from '@travi/github-scaffolder';
 
 export function javascriptScaffolderFactory(decisions) {
+  const scope = '@pragmatic-divops';
+
   return options => scaffoldJavaScript({
     ...options,
     configs: {
-      eslint: {scope: '@pragmatic-divops'},
-      remark: '@pragmatic-divops/remark-preset',
+      eslint: {scope},
+      remark: `${scope}/remark-preset`,
       babelPreset: {name: '@form8ion', packageName: '@form8ion/babel-preset'},
-      commitlint: {name: '@pragmatic-divops', packageName: '@pragmatic-divops/commitlint-config'}
+      commitlint: {name: scope, packageName: `${scope}/commitlint-config`}
     },
     overrides: {npmAccount: 'form8ion'},
     ciServices: {'GitHub Actions': {scaffolder: scaffoldGitHubActionsCi, public: true}},
