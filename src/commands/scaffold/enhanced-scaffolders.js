@@ -1,6 +1,7 @@
 import {scaffold as scaffoldJavaScript} from '@travi/javascript-scaffolder';
 import {scaffold as scaffoldGitHubActionsCi} from '@form8ion/github-actions-node-ci';
 import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
+import {scaffold as scaffoldEslintConfig} from '@form8ion/eslint-config-extender';
 import {prompt} from '@travi/github-scaffolder';
 
 export function javascriptScaffolderFactory(decisions) {
@@ -17,7 +18,9 @@ export function javascriptScaffolderFactory(decisions) {
     overrides: {npmAccount: 'form8ion'},
     ciServices: {'GitHub Actions': {scaffolder: scaffoldGitHubActionsCi, public: true}},
     applicationTypes: {},
-    packageTypes: {},
+    packageTypes: {
+      'ESLint Config': {scaffolder: scaffoldEslintConfig}
+    },
     unitTestFrameworks: {mocha: {scaffolder: scaffoldMocha}},
     decisions
   });

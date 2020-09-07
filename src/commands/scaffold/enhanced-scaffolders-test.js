@@ -2,6 +2,7 @@ import * as javascriptScaffolder from '@travi/javascript-scaffolder';
 import * as githubScaffolder from '@travi/github-scaffolder';
 import {scaffold as scaffoldGitHubActionsCi} from '@form8ion/github-actions-node-ci';
 import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
+import {scaffold as scaffoldEslintConfig} from '@form8ion/eslint-config-extender';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
@@ -35,7 +36,9 @@ suite('enhanced scaffolders', () => {
         overrides: {npmAccount: 'form8ion'},
         ciServices: {'GitHub Actions': {scaffolder: scaffoldGitHubActionsCi, public: true}},
         applicationTypes: {},
-        packageTypes: {},
+        packageTypes: {
+          'ESLint Config': {scaffolder: scaffoldEslintConfig}
+        },
         unitTestFrameworks: {mocha: {scaffolder: scaffoldMocha}},
         decisions
       })
