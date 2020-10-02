@@ -2,7 +2,7 @@ import {scaffold, questionNames as projectQuestionNames} from '@travi/project-sc
 import {questionNames as jsQuestionNames} from '@travi/javascript-scaffolder';
 import {scaffold as scaffoldGithub} from '@travi/github-scaffolder';
 import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
-import {githubPromptFactory, javascriptScaffolderFactory} from './enhanced-scaffolders';
+import {githubPromptFactory, javascriptScaffolderFactory} from '../../common/enhanced-scaffolders';
 
 export function handler(decisions) {
   const orgName = 'pragmatic-divops';

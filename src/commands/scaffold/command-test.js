@@ -5,7 +5,7 @@ import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import * as enhancedScaffolders from './enhanced-scaffolders';
+import * as enhancedScaffolders from '../../common/enhanced-scaffolders';
 import {command, describe, handler} from '.';
 
 suite('scaffold command', () => {
