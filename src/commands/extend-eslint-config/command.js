@@ -1,8 +1,9 @@
 import {extendEslintConfig} from '@form8ion/eslint-config-extender';
+import {defineDecisions} from '../../common/options';
 import {javascriptScaffolderFactory} from '../../common/enhanced-scaffolders';
 
-export function handler(decisions) {
-  return extendEslintConfig({decisions}, javascriptScaffolderFactory);
+export function handler(providedDecisions) {
+  return extendEslintConfig({decisions: defineDecisions(providedDecisions)}, javascriptScaffolderFactory);
 }
 
 export const command = 'extend-eslint-config';
