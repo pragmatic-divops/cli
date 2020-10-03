@@ -14,6 +14,7 @@ suite('extend-eslint-config command', () => {
 
     sandbox.stub(eslintConfigExtender, 'extendEslintConfig');
     sandbox.stub(commonOptions, 'defineDecisions');
+    sandbox.stub(commonOptions, 'defineScaffoldOptions');
   });
 
   teardown(() => sandbox.restore());
@@ -21,10 +22,12 @@ suite('extend-eslint-config command', () => {
   test('that the command is defined', async () => {
     const providedDecisions = any.simpleObject();
     const decisions = any.simpleObject();
+    const scaffoldeOptions = any.simpleObject();
     const scaffoldingResults = any.simpleObject();
     commonOptions.defineDecisions.withArgs(providedDecisions).returns(decisions);
+    commonOptions.defineScaffoldOptions.withArgs(decisions).returns(scaffoldeOptions);
     eslintConfigExtender.extendEslintConfig
-      .withArgs({decisions}, javascriptScaffolderFactory)
+      .withArgs(scaffoldeOptions, javascriptScaffolderFactory)
       .resolves(scaffoldingResults);
 
     assert.equal(await handler(providedDecisions), scaffoldingResults);
