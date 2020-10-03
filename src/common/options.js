@@ -18,7 +18,8 @@ export function defineDecisions(providedDecisions) {
     [jsQuestionNames.AUTHOR_EMAIL]: 'npm@travi.org',
     [jsQuestionNames.AUTHOR_URL]: 'https://matt.travi.org',
     [jsQuestionNames.UNIT_TEST_FRAMEWORK]: 'mocha',
-    [jsQuestionNames.SCOPE]: orgName
+    [jsQuestionNames.SCOPE]: orgName,
+    [jsQuestionNames.CI_SERVICE]: 'GitHub Actions'
   };
 }
 
