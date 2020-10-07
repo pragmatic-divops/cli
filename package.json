@@ -41,7 +41,7 @@
     "test:integration:focus": "run-s 'test:integration:base -- --profile focus'"
   },
   "dependencies": {
-    "@form8ion/eslint-config-extender": "1.1.0-beta.4",
+    "@form8ion/eslint-config-extender": "1.1.0-beta.5",
     "@form8ion/github-actions-node-ci": "1.6.0",
     "@form8ion/mocha-scaffolder": "1.0.0",
     "@form8ion/renovate-scaffolder": "1.3.0",
