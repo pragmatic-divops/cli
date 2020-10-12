@@ -60,7 +60,7 @@
     "@pragmatic-divops/eslint-config": "1.0.6",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.0",
     "@pragmatic-divops/eslint-config-mocha": "1.0.0",
-    "@pragmatic-divops/remark-preset": "1.0.1",
+    "@pragmatic-divops/remark-preset": "1.0.2",
     "@travi/any": "2.0.13",
     "@travi/babel-preset": "3.0.30",
     "babel-plugin-istanbul": "6.0.0",
