@@ -1,34 +1,37 @@
-import * as projectScaffolder from '@travi/project-scaffolder';
-import {assert} from 'chai';
+import * as eslintConfigExtender from '@form8ion/eslint-config-extender';
 import sinon from 'sinon';
+import {assert} from 'chai';
 import any from '@travi/any';
 import * as commonOptions from '../../common/options';
-import {command, describe, handler} from '.';
+import {javascriptScaffolderFactory} from '../../common/enhanced-scaffolders';
+import {command, describe, handler} from './command';
 
-suite('scaffold command', () => {
+suite('extend-eslint-config command', () => {
   let sandbox;
 
   setup(() => {
     sandbox = sinon.createSandbox();
 
-    sandbox.stub(projectScaffolder, 'scaffold');
+    sandbox.stub(eslintConfigExtender, 'extendEslintConfig');
     sandbox.stub(commonOptions, 'defineDecisions');
     sandbox.stub(commonOptions, 'defineScaffoldOptions');
   });
 
   teardown(() => sandbox.restore());
 
-  test('that the scaffold command is defined', async () => {
-    const scaffoldingResults = any.simpleObject();
+  test('that the command is defined', async () => {
     const providedDecisions = any.simpleObject();
     const decisions = any.simpleObject();
     const scaffoldeOptions = any.simpleObject();
+    const scaffoldingResults = any.simpleObject();
     commonOptions.defineDecisions.withArgs(providedDecisions).returns(decisions);
     commonOptions.defineScaffoldOptions.withArgs(decisions).returns(scaffoldeOptions);
-    projectScaffolder.scaffold.withArgs(scaffoldeOptions).resolves(scaffoldingResults);
+    eslintConfigExtender.extendEslintConfig
+      .withArgs(scaffoldeOptions, javascriptScaffolderFactory)
+      .resolves(scaffoldingResults);
 
     assert.equal(await handler(providedDecisions), scaffoldingResults);
-    assert.equal(command, 'scaffold');
-    assert.equal(describe, 'Scaffold a new project');
+    assert.equal(command, 'extend-eslint-config');
+    assert.equal(describe, 'Extend a @form8ion shareable ESLint config');
   });
 });
