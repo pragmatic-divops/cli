@@ -52,7 +52,7 @@
     "@travi/netlify-scaffolder": "1.6.0",
     "@travi/project-scaffolder": "8.10.10",
     "source-map-support": "0.5.19",
-    "update-notifier": "5.0.0",
+    "update-notifier": "5.0.1",
     "yargs": "16.1.0"
   },
   "devDependencies": {
