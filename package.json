@@ -67,7 +67,7 @@
     "@travi/any": "2.0.13",
     "@travi/babel-preset": "3.0.32",
     "babel-plugin-istanbul": "6.0.0",
-    "ban-sensitive-files": "1.9.12",
+    "ban-sensitive-files": "1.9.13",
     "chai": "4.2.0",
     "codecov": "3.8.0",
     "cucumber": "6.0.5",
