@@ -65,7 +65,7 @@
     "@pragmatic-divops/eslint-config-mocha": "1.0.0",
     "@pragmatic-divops/remark-preset": "1.0.2",
     "@travi/any": "2.0.15",
-    "@travi/babel-preset": "3.0.37",
+    "@travi/babel-preset": "3.0.38",
     "babel-plugin-istanbul": "6.0.0",
     "ban-sensitive-files": "1.9.14",
     "chai": "4.2.0",
