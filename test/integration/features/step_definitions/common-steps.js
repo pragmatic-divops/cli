@@ -89,7 +89,7 @@ After(function () {
 When(/^the project is scaffolded$/, async function () {
   const visibility = any.fromList(['Public', 'Private']);
   const repoShouldBeCreated = this.getAnswerFor(projectQuestionNames.GIT_REPO);
-  const projectType = this.getAnswerFor(projectQuestionNames.PROJECT_TYPE);
+  const projectLanguage = this.getAnswerFor(projectQuestionNames.PROJECT_LANGUAGE);
   const shouldBeScoped = any.boolean();
 
   await action({
@@ -103,8 +103,8 @@ When(/^the project is scaffolded$/, async function () {
     },
     ...'Private' === visibility && {[projectQuestionNames.UNLICENSED]: true},
     [projectQuestionNames.GIT_REPO]: repoShouldBeCreated,
-    [projectQuestionNames.PROJECT_TYPE]: projectType,
-    ...'JavaScript' === projectType && {
+    [projectQuestionNames.PROJECT_LANGUAGE]: projectLanguage,
+    ...'JavaScript' === projectLanguage && {
       [javascriptQuestionNames.NODE_VERSION_CATEGORY]: 'LTS',
       [javascriptQuestionNames.PROJECT_TYPE]: 'Package',
       [javascriptQuestionNames.UNIT_TESTS]: true,
