@@ -1,4 +1,5 @@
 import {questionNames as projectQuestionNames} from '@travi/project-scaffolder';
+import {packageManagers} from '@form8ion/javascript-core';
 import {questionNames as jsQuestionNames} from '@travi/javascript-scaffolder';
 import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldGithub} from '@travi/github-scaffolder';
@@ -38,7 +39,8 @@ suite('options', () => {
         [jsQuestionNames.AUTHOR_URL]: 'https://matt.travi.org',
         [jsQuestionNames.UNIT_TEST_FRAMEWORK]: 'mocha',
         [jsQuestionNames.SCOPE]: orgName,
-        [jsQuestionNames.CI_SERVICE]: 'GitHub Actions'
+        [jsQuestionNames.CI_SERVICE]: 'GitHub Actions',
+        [jsQuestionNames.PACKAGE_MANAGER]: packageManagers.NPM
       }
     );
   });
