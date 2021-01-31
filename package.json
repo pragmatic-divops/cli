@@ -61,7 +61,7 @@
     "@form8ion/core": "1.4.1",
     "@istanbuljs/nyc-config-babel": "3.0.0",
     "@pragmatic-divops/commitlint-config": "1.0.2",
-    "@pragmatic-divops/eslint-config": "1.0.16",
+    "@pragmatic-divops/eslint-config": "1.0.17",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.0",
     "@pragmatic-divops/eslint-config-mocha": "1.0.0",
     "@pragmatic-divops/remark-preset": "1.0.2",
