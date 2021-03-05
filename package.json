@@ -63,7 +63,7 @@
     "@pragmatic-divops/commitlint-config": "1.0.4",
     "@pragmatic-divops/eslint-config": "1.0.19",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.0",
-    "@pragmatic-divops/eslint-config-mocha": "1.0.0",
+    "@pragmatic-divops/eslint-config-mocha": "1.0.1",
     "@pragmatic-divops/remark-preset": "1.0.3",
     "@travi/any": "2.0.16",
     "@travi/babel-preset": "3.0.46",
