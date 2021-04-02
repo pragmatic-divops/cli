@@ -60,7 +60,7 @@
     "@babel/register": "7.13.14",
     "@form8ion/core": "1.4.2",
     "@istanbuljs/nyc-config-babel": "3.0.0",
-    "@pragmatic-divops/commitlint-config": "1.0.4",
+    "@pragmatic-divops/commitlint-config": "1.0.5",
     "@pragmatic-divops/eslint-config": "1.0.21",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.0",
     "@pragmatic-divops/eslint-config-mocha": "1.0.1",
