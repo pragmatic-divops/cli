@@ -51,7 +51,7 @@
     "@travi/github-scaffolder": "5.3.3",
     "@travi/javascript-scaffolder": "12.2.12",
     "@travi/netlify-scaffolder": "1.6.0",
-    "@travi/project-scaffolder": "9.0.10",
+    "@travi/project-scaffolder": "10.0.0",
     "source-map-support": "0.5.19",
     "update-notifier": "5.1.0",
     "yargs": "17.0.0"
