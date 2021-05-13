@@ -48,7 +48,7 @@
     "@form8ion/javascript-core": "2.9.3",
     "@form8ion/mocha-scaffolder": "1.0.0",
     "@form8ion/renovate-scaffolder": "1.5.0",
-    "@travi/github-scaffolder": "5.3.3",
+    "@travi/github-scaffolder": "6.0.0",
     "@travi/javascript-scaffolder": "13.0.2",
     "@travi/netlify-scaffolder": "1.6.0",
     "@travi/project-scaffolder": "10.0.0",
