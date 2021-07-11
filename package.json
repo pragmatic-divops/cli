@@ -39,7 +39,8 @@
     "test:integration:debug": "DEBUG=test run-s test:integration",
     "test:integration:wip": "run-s 'test:integration:base -- --profile wip'",
     "test:integration:wip:debug": "DEBUG=test run-s 'test:integration:wip'",
-    "test:integration:focus": "run-s 'test:integration:base -- --profile focus'"
+    "test:integration:focus": "run-s 'test:integration:base -- --profile focus'",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@form8ion/eslint-config-extender": "1.1.10",
