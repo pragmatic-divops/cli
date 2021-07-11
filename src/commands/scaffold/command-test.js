@@ -1,4 +1,4 @@
-import * as projectScaffolder from '@travi/project-scaffolder';
+import * as projectScaffolder from '@form8ion/project';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';

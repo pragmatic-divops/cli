@@ -1,4 +1,4 @@
-import {questionNames as projectQuestionNames} from '@travi/project-scaffolder';
+import {questionNames as projectQuestionNames} from '@form8ion/project';
 import {packageManagers} from '@form8ion/javascript-core';
 import {questionNames as jsQuestionNames} from '@travi/javascript-scaffolder';
 import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';

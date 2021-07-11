@@ -7,7 +7,7 @@ import {assert} from 'chai';
 let questionNames;
 
 Before(() => {
-  questionNames = require('@travi/project-scaffolder').questionNames;
+  questionNames = require('@form8ion/project').questionNames;
 });
 
 Given(/^the project should be versioned in git$/, async function () {

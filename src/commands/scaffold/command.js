@@ -1,4 +1,4 @@
-import {scaffold} from '@travi/project-scaffolder';
+import {scaffold} from '@form8ion/project';
 import {defineDecisions, defineScaffoldOptions} from '../../common/options';
 
 export function handler(providedDecisions) {
