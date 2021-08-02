@@ -10,6 +10,7 @@ import {githubToken} from './vcs/github-api-steps';
 
 let action,
   javascriptQuestionNames,
+  dialects,
   projectQuestionNames;
 
 const pathToNodeModules = [__dirname, '../../../../', 'node_modules/'];
@@ -28,8 +29,9 @@ Before(async function () {
   require('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
   this.execa = td.replace('execa');
-  projectQuestionNames = require('@form8ion/project').questionNames;
-  javascriptQuestionNames = require('@travi/javascript-scaffolder').questionNames;
+  ({questionNames: projectQuestionNames} = require('@form8ion/project'));
+  ({questionNames: javascriptQuestionNames} = require('@travi/javascript-scaffolder'));
+  ({dialects} = require('@form8ion/javascript-core'));
   action = require('../../../../src/commands/scaffold/command').handler;
 
   stubbedFs({
@@ -106,10 +108,11 @@ When(/^the project is scaffolded$/, async function () {
     ...'JavaScript' === projectLanguage && {
       [javascriptQuestionNames.NODE_VERSION_CATEGORY]: 'LTS',
       [javascriptQuestionNames.PROJECT_TYPE]: 'Package',
+      [javascriptQuestionNames.DIALECT]: dialects.BABEL,
       [javascriptQuestionNames.UNIT_TESTS]: true,
       [javascriptQuestionNames.INTEGRATION_TESTS]: true,
       [javascriptQuestionNames.CI_SERVICE]: 'Travis',
-      [javascriptQuestionNames.TRANSPILE_LINT]: true,
+      [javascriptQuestionNames.CONFIGURE_LINTING]: true,
       [javascriptQuestionNames.PROJECT_TYPE_CHOICE]: 'Other',
       [javascriptQuestionNames.SHOULD_BE_SCOPED]: shouldBeScoped
     }
