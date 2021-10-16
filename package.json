@@ -68,7 +68,7 @@
     "@pragmatic-divops/remark-preset": "2.0.5",
     "@travi/any": "2.0.18",
     "@travi/babel-preset": "3.0.67",
-    "babel-plugin-istanbul": "6.0.0",
+    "babel-plugin-istanbul": "6.1.1",
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
     "codecov": "3.8.3",
