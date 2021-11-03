@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@babel/register": "7.16.0",
+    "@cucumber/cucumber": "8.0.0-rc.1",
     "@form8ion/core": "1.4.2",
     "@istanbuljs/nyc-config-babel": "3.0.0",
     "@pragmatic-divops/commitlint-config": "1.0.8",
@@ -72,7 +73,6 @@
     "ban-sensitive-files": "1.9.16",
     "chai": "4.3.4",
     "codecov": "3.8.3",
-    "cucumber": "6.0.5",
     "cz-conventional-changelog": "3.3.0",
     "gherkin-lint": "4.2.2",
     "http-status-codes": "2.1.4",
