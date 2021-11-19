@@ -3,7 +3,7 @@ import {fileExists} from '@form8ion/core';
 import {Before, Given, Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
 import any from '@travi/any';
-import td from 'testdouble';
+import * as td from 'testdouble';
 
 function versionSegment() {
   return any.integer({max: 20});

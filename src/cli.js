@@ -1,6 +1,6 @@
-import 'source-map-support/register';
-import * as scaffoldCommand from './commands/scaffold';
-import * as extendEslintConfigCommand from './commands/extend-eslint-config';
+import 'source-map-support/register.js';
+import * as scaffoldCommand from './commands/scaffold/index.js';
+import * as extendEslintConfigCommand from './commands/extend-eslint-config/index.js';
 
 export default function (yargs) {
   return yargs

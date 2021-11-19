@@ -3,6 +3,7 @@
   "description": "cli for various organization tools",
   "license": "MIT",
   "version": "0.0.0-semantically-released",
+  "type": "module",
   "bin": {
     "pragmatic-divops": "bin/pragmatic-divops.js"
   },
@@ -35,7 +36,7 @@
     "lint:peer": "npm ls >/dev/null",
     "lint:gherkin": "gherkin-lint",
     "test:integration": "run-s 'test:integration:base -- --profile noWip'",
-    "test:integration:base": "DEBUG=any cucumber-js test/integration --profile base",
+    "test:integration:base": "NODE_OPTIONS=\"--loader=testdouble --enable-source-maps\" DEBUG=any cucumber-js test/integration --profile base",
     "test:integration:debug": "DEBUG=test run-s test:integration",
     "test:integration:wip": "run-s 'test:integration:base -- --profile wip'",
     "test:integration:wip:debug": "DEBUG=test run-s 'test:integration:wip'",

@@ -2,8 +2,8 @@ import * as projectScaffolder from '@form8ion/project';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
-import * as commonOptions from '../../common/options';
-import {command, describe, handler} from '.';
+import * as commonOptions from '../../common/options.js';
+import {command, describe, handler} from './index.js';
 
 suite('scaffold command', () => {
   let sandbox;

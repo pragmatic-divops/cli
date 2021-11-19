@@ -1,18 +1,21 @@
 import {promises} from 'fs';
-import {resolve} from 'path';
+import {fileURLToPath} from 'url';
+import {dirname, resolve} from 'path';
 import {After, Before, setWorldConstructor, When} from '@cucumber/cucumber';
 import any from '@travi/any';
 
 import stubbedFs from 'mock-fs';
-import td from 'testdouble';
-import {World} from '../support/world';
-import {githubToken} from './vcs/github-api-steps';
+import * as td from 'testdouble';
+import {World} from '../support/world.js';
+import {githubToken} from './vcs/github-api-steps.js';
 
 let action,
   javascriptQuestionNames,
   dialects,
   projectQuestionNames;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const pathToNodeModules = [__dirname, '../../../../', 'node_modules/'];
 
 export const projectNameAnswer = 'project-name';
@@ -25,14 +28,14 @@ Before(async function () {
 
   // work around for overly aggressive mock-fs, see:
   // https://github.com/tschaub/mock-fs/issues/213#issuecomment-347002795
-  require('validate-npm-package-name'); // eslint-disable-line import/no-extraneous-dependencies
-  require('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
+  await import('validate-npm-package-name'); // eslint-disable-line import/no-extraneous-dependencies
+  await import('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
-  this.execa = td.replace('execa');
-  ({questionNames: projectQuestionNames} = require('@form8ion/project'));
-  ({questionNames: javascriptQuestionNames} = require('@travi/javascript-scaffolder'));
-  ({dialects} = require('@form8ion/javascript-core'));
-  action = require('../../../../src/commands/scaffold/command').handler;
+  this.execa = await td.replaceEsm('execa');
+  ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
+  ({questionNames: javascriptQuestionNames} = await import('@travi/javascript-scaffolder'));
+  ({dialects} = await import('@form8ion/javascript-core'));
+  action = await import('../../../../src/commands/scaffold/command').handler;
 
   stubbedFs({
     [`${process.env.HOME}/.netrc`]: `machine github.com\n  login ${githubToken}`,

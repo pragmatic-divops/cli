@@ -1,9 +1,9 @@
 import any from '@travi/any';
 import {assert} from 'chai';
 import sinon from 'sinon';
-import * as scaffoldCommand from './commands/scaffold';
-import * as extendEslintConfigCommand from './commands/extend-eslint-config';
-import cli from './cli';
+import * as scaffoldCommand from './commands/scaffold/index.js';
+import * as extendEslintConfigCommand from './commands/extend-eslint-config/index.js';
+import cli from './cli.js';
 
 suite('cli', () => {
   test('that commands are registered', () => {
