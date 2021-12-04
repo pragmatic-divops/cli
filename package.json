@@ -45,7 +45,7 @@
   "dependencies": {
     "@form8ion/eslint-config-extender": "1.1.14",
     "@form8ion/gatsby": "1.0.0",
-    "@form8ion/github-actions-node-ci": "1.14.0",
+    "@form8ion/github-actions-node-ci": "1.16.0",
     "@form8ion/javascript-core": "3.1.0",
     "@form8ion/mocha-scaffolder": "1.2.0",
     "@form8ion/project": "11.0.1",
