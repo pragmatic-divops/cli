@@ -60,7 +60,7 @@
   "devDependencies": {
     "@babel/register": "7.16.9",
     "@cucumber/cucumber": "8.0.0-rc.2",
-    "@form8ion/core": "1.4.2",
+    "@form8ion/core": "1.5.0",
     "@istanbuljs/nyc-config-babel": "3.0.0",
     "@pragmatic-divops/commitlint-config": "1.0.13",
     "@pragmatic-divops/eslint-config": "1.0.36",
