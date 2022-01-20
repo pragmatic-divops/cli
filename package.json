@@ -51,7 +51,7 @@
     "@form8ion/project": "11.0.2",
     "@form8ion/renovate-scaffolder": "1.7.0",
     "@travi/github-scaffolder": "7.0.0",
-    "@travi/javascript-scaffolder": "14.10.1",
+    "@travi/javascript-scaffolder": "14.14.7",
     "@travi/netlify-scaffolder": "1.6.0",
     "source-map-support": "0.5.21",
     "update-notifier": "5.1.0",
