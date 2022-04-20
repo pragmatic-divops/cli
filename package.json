@@ -92,6 +92,6 @@
     "rollup-plugin-json": "4.0.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "sinon": "13.0.2",
-    "testdouble": "3.16.4"
+    "testdouble": "3.16.5"
   }
 }
