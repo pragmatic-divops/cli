@@ -4,8 +4,8 @@ import {fileExists} from '@form8ion/core';
 
 let questionNames;
 
-Before(() => {
-  questionNames = require('@form8ion/project').questionNames;
+Before(async () => {
+  questionNames = (await import('@form8ion/project')).questionNames;
 });
 
 Given(/^the project language should be Other$/, async function () {

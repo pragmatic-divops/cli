@@ -1,4 +1,3 @@
-import 'source-map-support/register.js';
 import * as scaffoldCommand from './commands/scaffold/index.js';
 import * as extendEslintConfigCommand from './commands/extend-eslint-config/index.js';
 

@@ -17,8 +17,8 @@ function semverStringFactory() {
 
 let questionNames;
 
-Before(function () {
-  questionNames = require('@form8ion/project').questionNames;
+Before(async function () {
+  questionNames = (await import('@form8ion/project')).questionNames;
 });
 
 Given(/^the project language should be JavaScript$/, async function () {

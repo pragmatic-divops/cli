@@ -1,11 +1,12 @@
 import {promises} from 'fs';
 import {fileURLToPath} from 'url';
 import {dirname, resolve} from 'path';
+
 import {After, Before, setWorldConstructor, When} from '@cucumber/cucumber';
 import any from '@travi/any';
-
 import stubbedFs from 'mock-fs';
 import * as td from 'testdouble';
+
 import {World} from '../support/world.js';
 import {githubToken} from './vcs/github-api-steps.js';
 
@@ -14,16 +15,19 @@ let action,
   dialects,
   projectQuestionNames;
 
+/* eslint-disable no-underscore-dangle */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+/* eslint-enable no-underscore-dangle */
 const pathToNodeModules = [__dirname, '../../../../', 'node_modules/'];
+const stubbedNodeModules = stubbedFs.load(resolve(...pathToNodeModules));
 
 export const projectNameAnswer = 'project-name';
 export const projectDescriptionAnswer = 'some project description';
 
 setWorldConstructor(World);
 
-Before(async function () {
+Before({timeout: 20 * 1000}, async function () {
   this.githubUser = any.word();
 
   // work around for overly aggressive mock-fs, see:
@@ -31,57 +35,17 @@ Before(async function () {
   await import('validate-npm-package-name'); // eslint-disable-line import/no-extraneous-dependencies
   await import('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
-  this.execa = await td.replaceEsm('execa');
+  this.execa = await td.replace('execa');
   ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
-  ({questionNames: javascriptQuestionNames} = await import('@travi/javascript-scaffolder'));
   ({dialects} = await import('@form8ion/javascript-core'));
-  action = await import('../../../../src/commands/scaffold/command').handler;
+  ({questionNames: javascriptQuestionNames} = await import('@travi/javascript-scaffolder'));
+
+  action = (await import('../../../../src/commands/scaffold/command.js')).handler;
 
   stubbedFs({
     [`${process.env.HOME}/.netrc`]: `machine github.com\n  login ${githubToken}`,
     [`${process.env.HOME}/.gitconfig`]: `[github]\n\tuser = ${this.githubUser}`,
-    node_modules: {
-      '@travi': {
-        'javascript-scaffolder': {
-          templates: {
-            'rollup.config.js': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@travi/javascript-scaffolder/templates/rollup.config.js'
-            )),
-            'example.mustache': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@travi/javascript-scaffolder/templates/example.mustache'
-            ))
-          }
-        }
-      },
-      '@form8ion': {
-        project: {
-          templates: {
-            'editorconfig.txt': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@form8ion/project/templates/editorconfig.txt'
-            )),
-            'README.mustache': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@form8ion/project/templates/README.mustache'
-            ))
-          }
-        },
-        'mocha-scaffolder': {
-          templates: {
-            'canary-test.txt': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@form8ion/mocha-scaffolder/templates/canary-test.txt'
-            )),
-            'mocha-setup.txt': await promises.readFile(resolve(
-              ...pathToNodeModules,
-              '@form8ion/mocha-scaffolder/templates/mocha-setup.txt'
-            ))
-          }
-        }
-      }
-    }
+    node_modules: stubbedNodeModules
   });
 });
 
