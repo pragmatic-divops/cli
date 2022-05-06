@@ -1,6 +1,6 @@
 import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
 import {questionNames as projectQuestionNames} from '@form8ion/project';
-import {questionNames as jsQuestionNames} from '@travi/javascript-scaffolder';
+import {questionNames as jsQuestionNames} from '@form8ion/javascript';
 import {packageManagers} from '@form8ion/javascript-core';
 import {scaffold as scaffoldGithub} from '@travi/github-scaffolder';
 import {githubPromptFactory, javascriptScaffolderFactory} from './enhanced-scaffolders.js';

@@ -1,4 +1,3 @@
-import {promises} from 'fs';
 import {fileURLToPath} from 'url';
 import {dirname, resolve} from 'path';
 
@@ -38,7 +37,7 @@ Before({timeout: 20 * 1000}, async function () {
   this.execa = await td.replace('execa');
   ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
   ({dialects} = await import('@form8ion/javascript-core'));
-  ({questionNames: javascriptQuestionNames} = await import('@travi/javascript-scaffolder'));
+  ({questionNames: javascriptQuestionNames} = await import('@form8ion/javascript'));
 
   action = (await import('../../../../src/commands/scaffold/command.js')).handler;
 

@@ -1,4 +1,4 @@
-import {scaffold as scaffoldJavaScript} from '@travi/javascript-scaffolder';
+import {scaffold as scaffoldJavaScript} from '@form8ion/javascript';
 import {scaffold as scaffoldGitHubActionsCi} from '@form8ion/github-actions-node-ci';
 import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
 import {scaffold as scaffoldEslintConfig} from '@form8ion/eslint-config-extender';
