@@ -67,6 +67,7 @@
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/eslint-config-mocha": "1.0.7",
     "@pragmatic-divops/remark-preset": "2.0.9",
+    "@rollup/plugin-node-resolve": "13.3.0",
     "@travi/any": "2.0.20",
     "@travi/babel-preset": "3.0.84",
     "babel-plugin-istanbul": "6.1.1",
@@ -90,7 +91,6 @@
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-json": "4.0.0",
-    "@rollup/plugin-node-resolve": "6.0.0",
     "sinon": "13.0.2",
     "testdouble": "3.16.5"
   }

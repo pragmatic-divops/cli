@@ -1,7 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ['error', {'devDependencies': true}] */
 import autoExternal from 'rollup-plugin-auto-external';
 import json from 'rollup-plugin-json';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import executable from 'rollup-plugin-executable';
 
 export default {
