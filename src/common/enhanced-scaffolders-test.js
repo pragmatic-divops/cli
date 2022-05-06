@@ -1,4 +1,4 @@
-import * as javascriptScaffolder from '@travi/javascript-scaffolder';
+import * as javascriptScaffolder from '@form8ion/javascript';
 import * as githubScaffolder from '@travi/github-scaffolder';
 import {scaffold as scaffoldGitHubActionsCi} from '@form8ion/github-actions-node-ci';
 import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
