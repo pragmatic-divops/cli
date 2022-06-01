@@ -87,7 +87,7 @@
     "remark-cli": "10.0.1",
     "remark-toc": "8.0.1",
     "rimraf": "3.0.2",
-    "rollup": "2.75.4",
+    "rollup": "2.75.5",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-json": "4.0.0",
