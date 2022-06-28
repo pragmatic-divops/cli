@@ -68,7 +68,7 @@
     "@pragmatic-divops/eslint-config-mocha": "1.0.8",
     "@pragmatic-divops/remark-preset": "2.0.10",
     "@rollup/plugin-node-resolve": "13.3.0",
-    "@travi/any": "2.1.2",
+    "@travi/any": "2.1.5",
     "@travi/babel-preset": "3.0.89",
     "babel-plugin-istanbul": "6.1.1",
     "ban-sensitive-files": "1.9.18",
