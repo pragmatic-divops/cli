@@ -44,9 +44,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@form8ion/eslint-config-extender": "3.1.0",
+    "@form8ion/eslint-config-extender": "3.1.2",
     "@form8ion/gatsby": "1.0.0",
-    "@form8ion/github-actions-node-ci": "3.6.1",
+    "@form8ion/github-actions-node-ci": "3.6.3",
     "@form8ion/javascript": "6.0.9",
     "@form8ion/javascript-core": "6.0.1",
     "@form8ion/mocha-scaffolder": "2.0.2",
@@ -54,11 +54,11 @@
     "@form8ion/renovate-scaffolder": "1.7.0",
     "@travi/github-scaffolder": "8.0.1",
     "@travi/netlify-scaffolder": "1.6.0",
-    "update-notifier": "5.1.0",
-    "yargs": "17.4.1"
+    "update-notifier": "6.0.2",
+    "yargs": "17.5.1"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "8.1.2",
+    "@cucumber/cucumber": "8.3.1",
     "@form8ion/core": "1.8.0",
     "@pragmatic-divops/commitlint-config": "1.0.8",
     "@pragmatic-divops/eslint-config": "1.0.28",
@@ -73,21 +73,21 @@
     "cz-conventional-changelog": "3.3.0",
     "gherkin-lint": "4.2.2",
     "http-status-codes": "2.2.0",
-    "husky": "7.0.4",
-    "lockfile-lint": "4.7.4",
+    "husky": "8.0.1",
+    "lockfile-lint": "4.7.5",
     "mocha": "10.0.0",
     "mock-fs": "5.1.2",
-    "nock": "13.2.4",
+    "nock": "13.2.7",
     "npm-run-all": "4.1.5",
     "nyc": "15.1.0",
-    "remark-cli": "10.0.1",
+    "remark-cli": "11.0.0",
     "remark-toc": "8.0.1",
     "rimraf": "3.0.2",
-    "rollup": "2.72.0",
+    "rollup": "2.75.7",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-json": "4.0.0",
-    "sinon": "13.0.2",
-    "testdouble": "3.16.5"
+    "sinon": "14.0.0",
+    "testdouble": "3.16.6"
   }
 }
