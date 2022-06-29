@@ -34,7 +34,8 @@ Before({timeout: 20 * 1000}, async function () {
   await import('validate-npm-package-name'); // eslint-disable-line import/no-extraneous-dependencies
   await import('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
-  this.execa = await td.replace('execa');
+  this.execa = await td.replaceEsm('@form8ion/execa-wrapper');
+  td.replace('execa');
   ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
   ({dialects} = await import('@form8ion/javascript-core'));
   ({questionNames: javascriptQuestionNames} = await import('@form8ion/javascript'));

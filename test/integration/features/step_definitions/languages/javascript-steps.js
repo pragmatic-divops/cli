@@ -24,23 +24,25 @@ Before(async function () {
 Given(/^the project language should be JavaScript$/, async function () {
   this.setAnswerFor(questionNames.PROJECT_LANGUAGE, 'JavaScript');
 
-  td.when(this.execa('npm run generate:md && npm test', {shell: true})).thenReturn({stdout: {pipe: () => undefined}});
-  td.when(this.execa('npm', ['whoami'])).thenResolve(any.word());
+  td.when(this.execa.default('npm run generate:md && npm test', {shell: true}))
+    .thenReturn({stdout: {pipe: () => undefined}});
+  td.when(this.execa.default('npm', ['whoami'])).thenResolve(any.word());
 
   const error = new Error('Command failed with exit code 1: npm ls husky --json');
   error.exitCode = 1;
   error.stdout = JSON.stringify({});
   error.command = 'npm ls husky --json';
 
-  td.when(this.execa('npm', ['ls', 'husky', '--json'])).thenReject(error);
+  td.when(this.execa.default('npm', ['ls', 'husky', '--json'])).thenReject(error);
 });
 
 Given(/^nvm is properly configured$/, function () {
   const latestLtsVersion = semverStringFactory();
 
-  td.when(this.execa('. ~/.nvm/nvm.sh && nvm ls-remote --lts', {shell: true}))
+  td.when(this.execa.default('. ~/.nvm/nvm.sh && nvm ls-remote --lts', {shell: true}))
     .thenResolve({stdout: [...any.listOf(semverStringFactory), latestLtsVersion, ''].join('\n')});
-  td.when(this.execa('. ~/.nvm/nvm.sh && nvm install', {shell: true})).thenReturn({stdout: {pipe: () => undefined}});
+  td.when(this.execa.default('. ~/.nvm/nvm.sh && nvm install', {shell: true}))
+    .thenReturn({stdout: {pipe: () => undefined}});
 });
 
 Then(/^JavaScript ignores are defined$/, async function () {
