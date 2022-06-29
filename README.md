@@ -9,12 +9,20 @@ cli for various organization tools
 
 <!--status-badges end -->
 
+## Usage
+
 <!--consumer-badges start -->
 
 [![MIT license][license-badge]][license-link]
 [![npm][npm-badge]][npm-link]
 
 <!--consumer-badges end -->
+
+### Installation
+
+```sh
+$ npm install @pragmatic-divops/cli --global
+```
 
 ## Table of Contents
 
