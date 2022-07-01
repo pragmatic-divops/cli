@@ -3,7 +3,6 @@ name: Node.js CI
   push:
     branches:
       - master
-      - alpha
       - beta
       - renovate/**
   pull_request:
@@ -22,9 +21,21 @@ jobs:
           cache: npm
       - run: npm clean-install
       - run: npm test
-      - name: semantic-release
-        uses: cycjimmy/semantic-release-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
       - uses: codecov/codecov-action@v3
+  trigger-release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    needs:
+      - verify
+    steps:
+      - uses: octokit/request-action@v2.x
+        with:
+          route: >-
+            POST
+            /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
+          owner: pragmatic-divops
+          repo: cli
+          ref: ${{ github.ref }}
+          workflow_id: release.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
