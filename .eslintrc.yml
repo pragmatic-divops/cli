@@ -2,3 +2,11 @@ extends:
   - '@pragmatic-divops'
   - '@pragmatic-divops/mocha'
   - '@pragmatic-divops/cucumber'
+
+parserOptions:
+  sourceType: module
+
+rules:
+  import/extensions:
+    - error
+    - ignorePackages
