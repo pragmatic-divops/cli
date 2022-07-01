@@ -1,1 +1,1 @@
-{"presets":["@travi"],"ignore":["./lib/"],"plugins": ["istanbul"]}
+{"presets":["@travi"],"ignore":["./lib/"]}
