@@ -42,7 +42,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@form8ion/eslint-config-extender": "4.0.0",
+    "@form8ion/eslint-config-extender": "4.0.1",
     "@form8ion/gatsby": "1.0.1",
     "@form8ion/github-actions-node-ci": "3.8.1",
     "@form8ion/javascript": "7.2.3",
