@@ -81,7 +81,8 @@ When(/^the project is scaffolded$/, async function () {
       [javascriptQuestionNames.CI_SERVICE]: 'Travis',
       [javascriptQuestionNames.CONFIGURE_LINTING]: true,
       [javascriptQuestionNames.PROJECT_TYPE_CHOICE]: 'Other',
-      [javascriptQuestionNames.SHOULD_BE_SCOPED]: shouldBeScoped
+      [javascriptQuestionNames.SHOULD_BE_SCOPED]: shouldBeScoped,
+      [javascriptQuestionNames.PROVIDE_EXAMPLE]: true
     }
   });
 });
