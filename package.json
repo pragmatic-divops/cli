@@ -64,7 +64,7 @@
     "@pragmatic-divops/eslint-config": "1.0.47",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/eslint-config-mocha": "1.0.9",
-    "@pragmatic-divops/remark-preset": "3.0.0",
+    "@pragmatic-divops/remark-preset": "3.0.1",
     "@rollup/plugin-node-resolve": "13.3.0",
     "@travi/any": "2.1.5",
     "@travi/babel-preset": "3.0.92",
