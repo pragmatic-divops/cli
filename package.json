@@ -62,7 +62,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "8.5.2",
     "@form8ion/core": "2.0.0",
-    "@pragmatic-divops/commitlint-config": "1.0.22",
+    "@pragmatic-divops/commitlint-config": "1.0.24",
     "@pragmatic-divops/eslint-config": "1.0.47",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/eslint-config-mocha": "1.0.9",
