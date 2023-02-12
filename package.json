@@ -50,7 +50,7 @@
     "@form8ion/mocha-scaffolder": "3.0.1",
     "@form8ion/project": "15.2.0",
     "@form8ion/renovate-scaffolder": "1.8.0",
-    "@travi/github-scaffolder": "8.0.2",
+    "@travi/github-scaffolder": "8.0.4",
     "@travi/netlify-scaffolder": "1.6.0",
     "source-map-support": "0.5.21",
     "update-notifier": "5.1.0",
