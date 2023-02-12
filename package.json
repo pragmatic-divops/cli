@@ -54,7 +54,7 @@
     "@travi/netlify-scaffolder": "1.6.0",
     "source-map-support": "0.5.21",
     "update-notifier": "5.1.0",
-    "yargs": "17.6.0"
+    "yargs": "17.6.2"
   },
   "devDependencies": {
     "@babel/register": "7.18.9",
