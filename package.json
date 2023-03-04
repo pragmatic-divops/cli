@@ -57,7 +57,7 @@
     "@travi/github-scaffolder": "8.0.4",
     "@travi/netlify-scaffolder": "1.6.0",
     "update-notifier": "5.1.0",
-    "yargs": "17.6.2"
+    "yargs": "17.7.1"
   },
   "devDependencies": {
     "@cucumber/cucumber": "8.11.1",
