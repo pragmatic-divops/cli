@@ -45,7 +45,7 @@
   "dependencies": {
     "@form8ion/codecov": "4.0.1",
     "@form8ion/cucumber-scaffolder": "2.1.0",
-    "@form8ion/eslint-config-extender": "5.0.2",
+    "@form8ion/eslint-config-extender": "6.1.0",
     "@form8ion/gatsby": "1.0.2",
     "@form8ion/github-actions-node-ci": "3.13.0",
     "@form8ion/javascript": "10.3.3",
@@ -60,7 +60,7 @@
     "yargs": "17.6.2"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "8.11.0",
+    "@cucumber/cucumber": "8.11.1",
     "@form8ion/core": "2.0.0",
     "@pragmatic-divops/commitlint-config": "1.0.29",
     "@pragmatic-divops/eslint-config": "1.0.64",
@@ -77,7 +77,7 @@
     "gherkin-lint": "4.2.2",
     "http-status-codes": "2.2.0",
     "husky": "8.0.3",
-    "lockfile-lint": "4.10.0",
+    "lockfile-lint": "4.10.1",
     "mocha": "10.2.0",
     "mock-fs": "5.2.0",
     "nock": "13.3.0",
