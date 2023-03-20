@@ -93,7 +93,7 @@
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-json": "4.0.0",
     "sinon": "15.0.1",
-    "testdouble": "3.16.8",
+    "testdouble": "3.17.1",
     "vitest": "0.29.2"
   }
 }
