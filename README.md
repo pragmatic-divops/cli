@@ -4,10 +4,20 @@ cli for various organization tools
 
 <!--status-badges start -->
 
-[![Node CI Workflow Status][github-actions-ci-badge]][github-actions-ci-link]
 [![Codecov][coverage-badge]][coverage-link]
+[![Node CI Workflow Status][github-actions-ci-badge]][github-actions-ci-link]
 
 <!--status-badges end -->
+
+## Table of Contents
+
+* [Usage](#usage)
+  * [Installation](#installation)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
+
+## Usage
 
 <!--consumer-badges start -->
 
@@ -16,11 +26,11 @@ cli for various organization tools
 
 <!--consumer-badges end -->
 
-## Table of Contents
+### Installation
 
-* [Contributing](#contributing)
-  * [Dependencies](#dependencies)
-  * [Verification](#verification)
+```sh
+$ npm install @pragmatic-divops/cli --global
+```
 
 ## Contributing
 
