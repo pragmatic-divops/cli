@@ -2,7 +2,6 @@ root: true
 
 extends:
   - '@pragmatic-divops'
-  - '@pragmatic-divops/mocha'
   - '@pragmatic-divops/cucumber'
 
 parserOptions:
