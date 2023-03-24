@@ -1,13 +1,14 @@
+import {promises} from 'node:fs';
 import {fileExists} from '@form8ion/core';
-import {promises} from 'fs';
+
 import {Before, Given, Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
 // import toml from '@iarna/toml';
 
 let questionNames;
 
-Before(() => {
-  questionNames = require('@form8ion/project').questionNames;
+Before(async () => {
+  ({questionNames} = (await import('@form8ion/project')));
 });
 
 Given(/^the project should be versioned in git$/, async function () {

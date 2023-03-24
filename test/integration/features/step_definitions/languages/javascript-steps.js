@@ -1,9 +1,10 @@
-import {promises} from 'fs';
+import {promises} from 'node:fs';
 import {fileExists} from '@form8ion/core';
+
 import {Before, Given, Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
 import any from '@travi/any';
-import td from 'testdouble';
+import * as td from 'testdouble';
 
 function versionSegment() {
   return any.integer({max: 20});
@@ -17,8 +18,8 @@ function semverStringFactory() {
 
 let questionNames;
 
-Before(function () {
-  questionNames = require('@form8ion/project').questionNames;
+Before(async function () {
+  ({questionNames} = (await import('@form8ion/project')));
 });
 
 Given(/^the project language should be JavaScript$/, async function () {

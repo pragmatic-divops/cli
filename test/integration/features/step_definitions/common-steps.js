@@ -1,9 +1,10 @@
-import {resolve} from 'path';
+import {dirname, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {After, Before, setWorldConstructor, When} from '@cucumber/cucumber';
 import any from '@travi/any';
 
 import stubbedFs from 'mock-fs';
-import td from 'testdouble';
+import * as td from 'testdouble';
 
 import {World} from '../support/world.js';
 import {githubToken} from './vcs/github-api-steps.js';
@@ -13,6 +14,7 @@ let action,
   dialects,
   projectQuestionNames;
 
+const __dirname = dirname(fileURLToPath(import.meta.url));        // eslint-disable-line no-underscore-dangle
 const pathToNodeModules = [__dirname, '../../../../', 'node_modules/'];
 const stubbedNodeModules = stubbedFs.load(resolve(...pathToNodeModules));
 
@@ -26,13 +28,13 @@ Before(async function () {
 
   // work around for overly aggressive mock-fs, see:
   // https://github.com/tschaub/mock-fs/issues/213#issuecomment-347002795
-  require('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
+  await import('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
-  this.execa = td.replace('@form8ion/execa-wrapper');
-  ({questionNames: projectQuestionNames} = require('@form8ion/project'));
-  ({questionNames: javascriptQuestionNames} = require('@form8ion/javascript'));
-  ({dialects} = require('@form8ion/javascript-core'));
-  action = require('../../../../src/commands/scaffold/command.js').handler;
+  ({default: this.execa} = (await td.replaceEsm('@form8ion/execa-wrapper')));
+  ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
+  ({questionNames: javascriptQuestionNames} = await import('@form8ion/javascript'));
+  ({dialects} = await import('@form8ion/javascript-core'));
+  ({handler: action} = (await import('../../../../src/commands/scaffold/command.js')));
 
   stubbedFs({
     [`${process.env.HOME}/.netrc`]: `machine github.com\n  login ${githubToken}`,

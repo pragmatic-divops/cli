@@ -12,6 +12,5 @@ export default {
     executable(),
     nodeResolve({mainFields: ['module']})
   ],
-  external: ['source-map-support/register'],
-  output: [{file: 'bin/pragmatic-divops.js', format: 'cjs', sourcemap: true, banner: '#!/usr/bin/env node'}]
+  output: [{file: 'bin/pragmatic-divops.js', format: 'esm', sourcemap: true, banner: '#!/usr/bin/env node'}]
 };
