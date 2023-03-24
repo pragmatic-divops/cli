@@ -1,5 +1,5 @@
 import {scaffold} from '@form8ion/project';
-import {defineDecisions, defineScaffoldOptions} from '../../common/options';
+import {defineDecisions, defineScaffoldOptions} from '../../common/options.js';
 
 export function handler(providedDecisions) {
   return scaffold(defineScaffoldOptions(defineDecisions(providedDecisions)));
