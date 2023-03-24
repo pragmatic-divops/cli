@@ -4,8 +4,9 @@ import any from '@travi/any';
 
 import stubbedFs from 'mock-fs';
 import td from 'testdouble';
-import {World} from '../support/world';
-import {githubToken} from './vcs/github-api-steps';
+
+import {World} from '../support/world.js';
+import {githubToken} from './vcs/github-api-steps.js';
 
 let action,
   javascriptQuestionNames,
@@ -31,7 +32,7 @@ Before(async function () {
   ({questionNames: projectQuestionNames} = require('@form8ion/project'));
   ({questionNames: javascriptQuestionNames} = require('@form8ion/javascript'));
   ({dialects} = require('@form8ion/javascript-core'));
-  action = require('../../../../src/commands/scaffold/command').handler;
+  action = require('../../../../src/commands/scaffold/command.js').handler;
 
   stubbedFs({
     [`${process.env.HOME}/.netrc`]: `machine github.com\n  login ${githubToken}`,

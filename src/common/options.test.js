@@ -8,7 +8,7 @@ import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import * as enhancedScaffolders from './enhanced-scaffolders';
+import * as enhancedScaffolders from './enhanced-scaffolders.js';
 import {defineDecisions, defineScaffoldOptions} from './options.js';
 
 describe('options', () => {

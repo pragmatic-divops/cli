@@ -9,5 +9,5 @@ parserOptions:
 
 rules:
   import/extensions:
-    - warn
+    - error
     - ignorePackages
