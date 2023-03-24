@@ -27,7 +27,7 @@ Before(async function () {
   // https://github.com/tschaub/mock-fs/issues/213#issuecomment-347002795
   require('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
 
-  this.execa = td.replace('execa');
+  this.execa = td.replace('@form8ion/execa-wrapper');
   ({questionNames: projectQuestionNames} = require('@form8ion/project'));
   ({questionNames: javascriptQuestionNames} = require('@form8ion/javascript'));
   ({dialects} = require('@form8ion/javascript-core'));
