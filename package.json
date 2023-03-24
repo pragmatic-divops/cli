@@ -43,8 +43,7 @@
     "bin/"
   ],
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "dependencies": {
     "@form8ion/codecov": "4.0.1",
