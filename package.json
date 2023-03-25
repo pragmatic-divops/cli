@@ -58,7 +58,7 @@
     "@form8ion/renovate-scaffolder": "1.8.0",
     "@travi/github-scaffolder": "8.0.4",
     "@travi/netlify-scaffolder": "1.6.0",
-    "update-notifier": "5.1.0",
+    "update-notifier": "6.0.2",
     "yargs": "17.7.1"
   },
   "devDependencies": {
