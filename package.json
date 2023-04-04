@@ -69,7 +69,7 @@
     "@pragmatic-divops/eslint-config": "1.0.67",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/remark-preset": "3.0.2",
-    "@rollup/plugin-node-resolve": "15.0.1",
+    "@rollup/plugin-node-resolve": "15.0.2",
     "@travi/any": "2.1.8",
     "@travi/babel-preset": "3.0.96",
     "ban-sensitive-files": "1.9.19",
