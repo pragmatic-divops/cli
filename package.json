@@ -59,7 +59,7 @@
     "@travi/github-scaffolder": "9.0.0",
     "@travi/netlify-scaffolder": "1.6.0",
     "update-notifier": "6.0.2",
-    "yargs": "17.7.1"
+    "yargs": "17.7.2"
   },
   "devDependencies": {
     "@babel/register": "7.21.0",
