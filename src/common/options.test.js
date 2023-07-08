@@ -52,7 +52,6 @@ describe('options', () => {
     expect(defineScaffoldOptions(decisions)).toEqual({
       languages: {JavaScript: jsScaffolder},
       vcsHosts: {GitHub: {scaffolder: scaffoldGithub, prompt: githubPrompt, public: true}},
-      overrides: {copyrightHolder: traviName},
       dependencyUpdaters: {Renovate: {scaffolder: scaffoldRenovate}},
       decisions
     });

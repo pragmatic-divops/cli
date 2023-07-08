@@ -30,7 +30,6 @@ export function defineScaffoldOptions(decisions) {
   return {
     languages: {JavaScript: javascriptScaffolderFactory(decisions)},
     vcsHosts: {GitHub: {scaffolder: scaffoldGithub, prompt: githubPromptFactory(decisions), public: true}},
-    overrides: {copyrightHolder: traviName},
     dependencyUpdaters: {Renovate: {scaffolder: scaffoldRenovate}},
     decisions
   };

@@ -1,6 +1,6 @@
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {After, Before, setWorldConstructor, When} from '@cucumber/cucumber';
+import {After, Before, Given, setWorldConstructor, When} from '@cucumber/cucumber';
 import any from '@travi/any';
 
 import stubbedFs from 'mock-fs';
@@ -25,6 +25,7 @@ setWorldConstructor(World);
 
 Before(async function () {
   this.githubUser = any.word();
+  this.visibility = any.fromList(['Public', 'Private']);
 
   // work around for overly aggressive mock-fs, see:
   // https://github.com/tschaub/mock-fs/issues/213#issuecomment-347002795
@@ -48,8 +49,11 @@ After(function () {
   td.reset();
 });
 
+Given('the visibility of the project is {string}', async function (visibility) {
+  this.visibility = visibility;
+});
+
 When(/^the project is scaffolded$/, async function () {
-  const visibility = any.fromList(['Public', 'Private']);
   const repoShouldBeCreated = this.getAnswerFor(projectQuestionNames.GIT_REPO);
   const projectLanguage = this.getAnswerFor(projectQuestionNames.PROJECT_LANGUAGE);
   const shouldBeScoped = any.boolean();
@@ -57,13 +61,13 @@ When(/^the project is scaffolded$/, async function () {
   await action({
     [projectQuestionNames.PROJECT_NAME]: projectNameAnswer,
     [projectQuestionNames.DESCRIPTION]: projectDescriptionAnswer,
-    [projectQuestionNames.VISIBILITY]: visibility,
+    [projectQuestionNames.VISIBILITY]: this.visibility,
     [projectQuestionNames.DEPENDENCY_UPDATER]: any.word(),
-    ...'Public' === visibility && {
+    ...'Public' === this.visibility && {
       [projectQuestionNames.LICENSE]: 'MIT',
       [projectQuestionNames.COPYRIGHT_YEAR]: 2000
     },
-    ...'Private' === visibility && {[projectQuestionNames.UNLICENSED]: true},
+    ...'Private' === this.visibility && {[projectQuestionNames.UNLICENSED]: true},
     [projectQuestionNames.GIT_REPO]: repoShouldBeCreated,
     [projectQuestionNames.PROJECT_LANGUAGE]: projectLanguage,
     ...'JavaScript' === projectLanguage && {
