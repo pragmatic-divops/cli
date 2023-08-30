@@ -55,7 +55,7 @@
     "@form8ion/lift": "8.0.2",
     "@form8ion/mocha-scaffolder": "4.0.0",
     "@form8ion/project": "17.0.6",
-    "@form8ion/renovate-scaffolder": "1.9.0",
+    "@form8ion/renovate-scaffolder": "2.1.0",
     "@travi/github-scaffolder": "9.0.1",
     "@travi/netlify-scaffolder": "1.6.0",
     "update-notifier": "6.0.2",
