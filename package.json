@@ -72,7 +72,7 @@
     "@rollup/plugin-node-resolve": "15.2.2",
     "@travi/any": "3.0.0",
     "@travi/babel-preset": "3.0.112",
-    "ban-sensitive-files": "1.10.0",
+    "ban-sensitive-files": "1.10.1",
     "c8": "8.0.1",
     "chai": "4.3.10",
     "cross-env": "7.0.3",
