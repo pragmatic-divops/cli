@@ -65,7 +65,7 @@
     "@babel/register": "7.22.15",
     "@cucumber/cucumber": "10.0.1",
     "@form8ion/core": "3.2.1",
-    "@pragmatic-divops/commitlint-config": "1.0.44",
+    "@pragmatic-divops/commitlint-config": "1.0.45",
     "@pragmatic-divops/eslint-config": "1.0.85",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/remark-preset": "4.0.3",
