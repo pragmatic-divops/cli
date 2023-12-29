@@ -62,7 +62,7 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@babel/register": "7.22.15",
+    "@babel/register": "7.23.7",
     "@cucumber/cucumber": "10.1.0",
     "@form8ion/core": "3.2.2",
     "@pragmatic-divops/commitlint-config": "1.0.51",
