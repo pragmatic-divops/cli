@@ -70,7 +70,7 @@
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/remark-preset": "4.0.3",
     "@rollup/plugin-node-resolve": "15.2.3",
-    "@travi/any": "3.0.2",
+    "@travi/any": "3.1.0",
     "@travi/babel-preset": "3.0.119",
     "ban-sensitive-files": "1.10.1",
     "c8": "9.1.0",
