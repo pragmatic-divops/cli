@@ -94,6 +94,6 @@
     "rollup-plugin-executable": "1.6.3",
     "rollup-plugin-json": "4.0.0",
     "testdouble": "3.20.2",
-    "vitest": "1.4.0"
+    "vitest": "1.5.0"
   }
 }
