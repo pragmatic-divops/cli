@@ -56,7 +56,7 @@
     "@form8ion/mocha-scaffolder": "5.0.1",
     "@form8ion/project": "18.2.0",
     "@form8ion/renovate-scaffolder": "2.1.0",
-    "@travi/github-scaffolder": "10.0.1",
+    "@travi/github-scaffolder": "10.1.0",
     "@travi/netlify-scaffolder": "1.6.0",
     "update-notifier": "7.0.0",
     "yargs": "17.7.2"
