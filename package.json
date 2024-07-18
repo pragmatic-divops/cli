@@ -80,7 +80,7 @@
     "execa": "9.3.0",
     "gherkin-lint": "4.2.4",
     "http-status-codes": "2.3.0",
-    "husky": "9.1.0",
+    "husky": "9.1.1",
     "jest-when": "3.6.0",
     "lockfile-lint": "4.14.0",
     "mock-fs": "5.2.0",
