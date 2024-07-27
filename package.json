@@ -58,7 +58,7 @@
     "@form8ion/renovate-scaffolder": "3.0.0",
     "@travi/github-scaffolder": "10.3.1",
     "@travi/netlify-scaffolder": "1.6.0",
-    "update-notifier": "7.2.0",
+    "update-notifier": "7.1.0",
     "yargs": "17.7.2"
   },
   "devDependencies": {
@@ -78,7 +78,7 @@
     "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
     "deep-equal": "2.2.3",
-    "execa": "9.3.0",
+    "execa": "8.0.1",
     "gherkin-lint": "4.2.4",
     "http-status-codes": "2.3.0",
     "husky": "9.1.3",
