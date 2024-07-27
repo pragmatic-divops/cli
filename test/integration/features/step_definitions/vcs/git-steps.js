@@ -3,9 +3,11 @@ import {fileExists} from '@form8ion/core';
 
 import {Before, Given, Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
+import * as td from 'testdouble';
 // import toml from '@iarna/toml';
 
 let questionNames;
+const simpleGitInstance = td.object(['checkIsRepo', 'listRemote', 'remote', 'addRemote', 'init']);
 
 Before(async () => {
   ({questionNames} = (await import('@form8ion/project')));
@@ -13,6 +15,10 @@ Before(async () => {
 
 Given(/^the project should be versioned in git$/, async function () {
   this.setAnswerFor(questionNames.GIT_REPO, true);
+
+  td.when(this.git.simpleGit({baseDir: process.cwd()})).thenReturn(simpleGitInstance);
+  td.when(simpleGitInstance.checkIsRepo('root')).thenResolve(false, true);
+  td.when(simpleGitInstance.listRemote()).thenResolve([]);
 });
 
 Given(/^the project should not be versioned in git$/, async function () {
@@ -23,8 +29,9 @@ Then(/^the base git files should be present$/, async function () {
   const gitAttributes = await promises.readFile(`${process.cwd()}/.gitattributes`);
 
   assert.equal(gitAttributes, '* text=auto');
-  // console.log(toml.parse(await readFile(`${process.cwd()}/.git/config`)))
-  // assert.isTrue(gitDirectoryStats.isDirectory());
+
+  td.verify(simpleGitInstance.init());
+  td.verify(simpleGitInstance.addRemote('origin', this.repoSshUrl));
 });
 
 Then('the base git files should not be present', async function () {

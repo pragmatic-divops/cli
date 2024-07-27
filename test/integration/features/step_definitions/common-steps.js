@@ -26,19 +26,17 @@ setWorldConstructor(World);
 Before(async function () {
   this.githubUser = any.word();
   this.visibility = any.fromList(['Public', 'Private']);
-
-  // work around for overly aggressive mock-fs, see:
-  // https://github.com/tschaub/mock-fs/issues/213#issuecomment-347002795
-  await import('color-convert'); // eslint-disable-line import/no-extraneous-dependencies
+  this.projectName = projectNameAnswer;
 
   ({default: this.execa} = (await td.replaceEsm('@form8ion/execa-wrapper')));
+  this.git = await td.replaceEsm('simple-git');
   ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
   ({questionNames: javascriptQuestionNames} = await import('@form8ion/javascript'));
   ({dialects} = await import('@form8ion/javascript-core'));
   ({handler: action} = (await import('../../../../src/commands/scaffold/command.js')));
 
   stubbedFs({
-    [`${process.env.HOME}/.netrc`]: `machine github.com\n  login ${githubToken}`,
+    [`${process.env.HOME}/.netrc`]: `machine api.github.com\n  login ${githubToken}`,
     [`${process.env.HOME}/.gitconfig`]: `[github]\n\tuser = ${this.githubUser}`,
     node_modules: stubbedNodeModules
   });

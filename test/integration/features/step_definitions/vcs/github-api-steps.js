@@ -1,36 +1,89 @@
-import {After, Before, Given} from '@cucumber/cucumber';
+import {AfterAll, BeforeAll, Given} from '@cucumber/cucumber';
 import any from '@travi/any';
-import nock from 'nock';
+import deepEqual from 'deep-equal';
+import {http, HttpResponse} from 'msw';
+import {setupServer} from 'msw/node';
 import {StatusCodes} from 'http-status-codes';
 
-let githubScope;
 export const githubToken = any.word();
 
-Before(async () => {
-  nock.disableNetConnect();
+const server = setupServer();
 
-  githubScope = nock('https://api.github.com/');
+server.events.on('request:start', ({request}) => {
+  // eslint-disable-next-line no-console
+  console.log('Outgoing:', request.method, request.url);
 });
 
-After(() => {
-  nock.enableNetConnect();
-  nock.cleanAll();
+function authorizationHeaderIncludesToken(request) {
+  return request.headers.get('authorization') === `token ${githubToken}`;
+}
+
+BeforeAll(async () => {
+  server.listen();
+});
+
+AfterAll(() => {
+  server.close();
 });
 
 Given(/^the GitHub token is valid$/, async function () {
-  githubScope
-    .matchHeader('Authorization', `token ${githubToken}`)
-    .post('/user/repos')
-    .reply(StatusCodes.OK, {
-      ssh_url: any.url(),
-      html_url: any.url()
-    });
-  githubScope
-    .matchHeader('Authorization', `token ${githubToken}`)
-    .get(`/users/${this.githubUser}/repos`)
-    .reply(StatusCodes.OK, []);
-  githubScope
-    .matchHeader('Authorization', `token ${githubToken}`)
-    .get('/user')
-    .reply(StatusCodes.OK, {login: this.githubUser});
+  this.repoSshUrl = any.url();
+  this.nextStepsFiledOnGithub = [];
+
+  server.use(
+    http.get(`https://api.github.com/repos/pragmatic-divops/${this.projectName}`, ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        return new HttpResponse(null, {status: StatusCodes.NOT_FOUND});
+      }
+
+      return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    })
+  );
+  server.use(
+    http.post('https://api.github.com/orgs/pragmatic-divops/repos', async ({request}) => {
+      if (
+        authorizationHeaderIncludesToken(request)
+        && deepEqual(await request.json(), {name: this.projectName, private: 'Private' === this.visibility})
+      ) {
+        return HttpResponse.json({
+          ssh_url: this.repoSshUrl,
+          html_url: any.url()
+        });
+      }
+
+      return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    })
+  );
+  server.use(
+    http.post(`https://api.github.com/repos/pragmatic-divops/${this.projectName}/issues`, async ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        this.nextStepsFiledOnGithub.push(await request.json());
+
+        return HttpResponse.json({
+          ssh_url: any.url(),
+          html_url: any.url()
+        });
+      }
+
+      return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    })
+  );
+  server.use(
+    http.get('https://api.github.com/user', ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        return HttpResponse.json({login: this.githubUser});
+      }
+
+      return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    })
+  );
+  server.use(
+    http.get('https://api.github.com/user/orgs', ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        return HttpResponse.json([{login: 'pragmatic-divops'}]);
+      }
+
+      return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    })
+  );
 });
