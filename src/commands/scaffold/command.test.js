@@ -21,10 +21,10 @@ describe('scaffold command', () => {
     const scaffoldingResults = any.simpleObject();
     const providedDecisions = any.simpleObject();
     const decisions = any.simpleObject();
-    const scaffoldeOptions = any.simpleObject();
+    const scaffoldOptions = any.simpleObject();
     when(commonOptions.defineDecisions).calledWith(providedDecisions).mockReturnValue(decisions);
-    when(commonOptions.defineScaffoldOptions).calledWith(decisions).mockReturnValue(scaffoldeOptions);
-    when(projectScaffolder.scaffold).calledWith(scaffoldeOptions).mockResolvedValue(scaffoldingResults);
+    when(commonOptions.defineScaffoldOptions).calledWith(decisions).mockReturnValue(scaffoldOptions);
+    when(projectScaffolder.scaffold).calledWith(scaffoldOptions).mockResolvedValue(scaffoldingResults);
 
     expect(await handler(providedDecisions)).toEqual(scaffoldingResults);
     expect(command).toEqual('scaffold');

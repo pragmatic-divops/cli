@@ -1,8 +1,8 @@
 import {questionNames as projectQuestionNames} from '@form8ion/project';
 import {questionNames as jsQuestionNames} from '@form8ion/javascript';
 import {packageManagers} from '@form8ion/javascript-core';
-import {scaffold as scaffoldGithub} from '@travi/github-scaffolder';
-import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
+import * as renovatePlugin from '@form8ion/renovate-scaffolder';
+import * as githubPlugin from '@form8ion/github';
 
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
@@ -25,12 +25,16 @@ describe('options', () => {
 
   it('should define the decisions', () => {
     const providedDecisions = any.simpleObject();
+    const githubPromptConstants = githubPlugin.promptConstants;
+    const githubDetailsPromptQuestionNames = githubPromptConstants.questionNames[
+      githubPromptConstants.ids.GITHUB_DETAILS
+    ];
 
     expect(defineDecisions(providedDecisions)).toEqual({
       ...providedDecisions,
       [projectQuestionNames.COPYRIGHT_HOLDER]: traviName,
       [projectQuestionNames.REPO_HOST]: 'GitHub',
-      [projectQuestionNames.REPO_OWNER]: orgName,
+      [githubDetailsPromptQuestionNames.GITHUB_ACCOUNT]: orgName,
       [projectQuestionNames.DEPENDENCY_UPDATER]: 'Renovate',
       [jsQuestionNames.AUTHOR_NAME]: traviName,
       [jsQuestionNames.AUTHOR_EMAIL]: 'npm@travi.org',
@@ -45,14 +49,14 @@ describe('options', () => {
   it('should define the scaffold options', () => {
     const decisions = any.simpleObject();
     const jsScaffolder = () => undefined;
-    const githubPrompt = () => undefined;
     when(enhancedScaffolders.javascriptScaffolderFactory).calledWith(decisions).mockReturnValue(jsScaffolder);
-    when(enhancedScaffolders.githubPromptFactory).calledWith(decisions).mockReturnValue(githubPrompt);
 
     expect(defineScaffoldOptions(decisions)).toEqual({
-      languages: {JavaScript: jsScaffolder},
-      vcsHosts: {GitHub: {scaffolder: scaffoldGithub, prompt: githubPrompt, public: true}},
-      dependencyUpdaters: {Renovate: {scaffolder: scaffoldRenovate}},
+      plugins: {
+        languages: {JavaScript: {scaffold: jsScaffolder}},
+        vcsHosts: {GitHub: githubPlugin},
+        dependencyUpdaters: {Renovate: renovatePlugin}
+      },
       decisions
     });
   });

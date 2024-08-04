@@ -4,7 +4,6 @@ import {scaffold as scaffoldMocha} from '@form8ion/mocha-scaffolder';
 import {scaffold as scaffoldEslintConfig} from '@form8ion/eslint-config-extender';
 import {scaffold as scaffoldGatsby} from '@form8ion/gatsby';
 import {scaffold as scaffoldNetlify} from '@travi/netlify-scaffolder';
-import {prompt} from '@travi/github-scaffolder';
 
 export function javascriptScaffolderFactory(decisions) {
   const scope = '@pragmatic-divops';
@@ -25,8 +24,4 @@ export function javascriptScaffolderFactory(decisions) {
     unitTestFrameworks: {mocha: {scaffolder: scaffoldMocha}},
     decisions
   });
-}
-
-export function githubPromptFactory(decisions) {
-  return () => prompt({account: 'pragmatic-divops', decisions});
 }
