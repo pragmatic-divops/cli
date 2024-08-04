@@ -6,7 +6,8 @@ import {
 } from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldCucumber} from '@form8ion/cucumber-scaffolder';
 import {test as jsApplicabilityTest} from '@form8ion/javascript';
-import {lift as liftGithubActionsCI, test as githubActionsCiApplicabilityTest} from '@form8ion/github-actions-node-ci';
+import * as githubWorkflowsPlugin from '@form8ion/github-actions-node-ci';
+import * as githubPlugin from '@form8ion/github';
 
 import {getEnhancedCodecovScaffolder, javascript as liftJavascript} from './enhanced-lifters.js';
 
@@ -21,7 +22,8 @@ export function handler({decisions}) {
     enhancers: {
       JavaScript: {test: jsApplicabilityTest, lift: liftJavascript},
       Renovate: {test: renovatePredicate, lift: liftRenovate},
-      'GitHub Actions CI': {test: githubActionsCiApplicabilityTest, lift: liftGithubActionsCI}
+      GitHub: githubPlugin,
+      'GitHub Actions CI': githubWorkflowsPlugin
     }
   });
 }

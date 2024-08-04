@@ -6,7 +6,8 @@ import {
 } from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldCucumber} from '@form8ion/cucumber-scaffolder';
 import {test as jsApplicabilityTest} from '@form8ion/javascript';
-import {lift as liftGithubActionsCI, test as githubActionsCiApplicabilityTest} from '@form8ion/github-actions-node-ci';
+import * as githubWorkflowsPlugin from '@form8ion/github-actions-node-ci';
+import * as githubPlugin from '@form8ion/github';
 
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
@@ -41,7 +42,8 @@ describe('lift command', () => {
         enhancers: {
           JavaScript: {test: jsApplicabilityTest, lift: enhancedLifters.javascript},
           Renovate: {test: renovatePredicate, lift: liftRenovate},
-          'GitHub Actions CI': {test: githubActionsCiApplicabilityTest, lift: liftGithubActionsCI}
+          GitHub: githubPlugin,
+          'GitHub Actions CI': githubWorkflowsPlugin
         }
       })
       .mockResolvedValue(liftingResults);
