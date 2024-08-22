@@ -71,7 +71,7 @@
     "@pragmatic-divops/remark-preset": "4.0.5",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@travi/any": "3.1.2",
-    "@travi/babel-preset": "3.0.130",
+    "@travi/babel-preset": "3.0.131",
     "ban-sensitive-files": "1.10.5",
     "c8": "10.1.2",
     "chai": "5.1.1",
