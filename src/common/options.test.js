@@ -8,7 +8,7 @@ import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import * as enhancedScaffolders from './enhanced-scaffolders.js';
+import {javascriptPluginFactory} from './enhanced-plugins.js';
 import {defineDecisions, defineScaffoldOptions} from './options.js';
 
 describe('options', () => {
@@ -16,7 +16,7 @@ describe('options', () => {
   const orgName = 'pragmatic-divops';
 
   beforeEach(() => {
-    vi.mock('./enhanced-scaffolders');
+    vi.mock('./enhanced-plugins.js');
   });
 
   afterEach(() => {
@@ -48,12 +48,12 @@ describe('options', () => {
 
   it('should define the scaffold options', () => {
     const decisions = any.simpleObject();
-    const jsScaffolder = () => undefined;
-    when(enhancedScaffolders.javascriptScaffolderFactory).calledWith(decisions).mockReturnValue(jsScaffolder);
+    const jsPlugin = any.simpleObject();
+    when(javascriptPluginFactory).calledWith(decisions).mockReturnValue(jsPlugin);
 
     expect(defineScaffoldOptions(decisions)).toEqual({
       plugins: {
-        languages: {JavaScript: {scaffold: jsScaffolder}},
+        languages: {JavaScript: jsPlugin},
         vcsHosts: {GitHub: githubPlugin},
         dependencyUpdaters: {Renovate: renovatePlugin}
       },

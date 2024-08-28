@@ -4,7 +4,7 @@ import * as githubPlugin from '@form8ion/github';
 import {questionNames as projectQuestionNames} from '@form8ion/project';
 import {questionNames as jsQuestionNames} from '@form8ion/javascript';
 
-import {javascriptScaffolderFactory} from './enhanced-scaffolders.js';
+import {javascriptPluginFactory} from './enhanced-plugins.js';
 
 const traviName = 'Matt Travi';
 const orgName = 'pragmatic-divops';
@@ -31,7 +31,7 @@ export function defineDecisions(providedDecisions) {
 export function defineScaffoldOptions(decisions) {
   return {
     plugins: {
-      languages: {JavaScript: {scaffold: javascriptScaffolderFactory(decisions)}},
+      languages: {JavaScript: javascriptPluginFactory(decisions)},
       vcsHosts: {GitHub: githubPlugin},
       dependencyUpdaters: {Renovate: renovatePlugin}
     },

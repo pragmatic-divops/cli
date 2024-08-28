@@ -4,8 +4,8 @@ import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import {javascriptScaffolderFactory} from '../../common/enhanced-scaffolders.js';
 import * as commonOptions from '../../common/options.js';
+import {javascriptPluginFactory} from '../../common/enhanced-plugins.js';
 import {command, describe as commandDescription, handler} from './command.js';
 
 describe('extend-eslint-config command', () => {
@@ -26,7 +26,7 @@ describe('extend-eslint-config command', () => {
     when(commonOptions.defineDecisions).calledWith(providedDecisions).mockReturnValue(decisions);
     when(commonOptions.defineScaffoldOptions).calledWith(decisions).mockReturnValue(scaffoldeOptions);
     when(eslintConfigExtender.extendEslintConfig)
-      .calledWith(scaffoldeOptions, javascriptScaffolderFactory)
+      .calledWith(scaffoldeOptions, javascriptPluginFactory)
       .mockResolvedValue(scaffoldingResults);
 
     expect(await handler(providedDecisions)).toEqual(scaffoldingResults);

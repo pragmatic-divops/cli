@@ -16,7 +16,7 @@ let action,
 
 const __dirname = dirname(fileURLToPath(import.meta.url));        // eslint-disable-line no-underscore-dangle
 const pathToNodeModules = [__dirname, '../../../../', 'node_modules/'];
-const stubbedNodeModules = stubbedFs.load(resolve(...pathToNodeModules));
+export const stubbedNodeModules = stubbedFs.load(resolve(...pathToNodeModules));
 
 export const projectNameAnswer = 'project-name';
 export const projectDescriptionAnswer = 'some project description';
@@ -27,6 +27,8 @@ Before(async function () {
   this.githubUser = any.word();
   this.visibility = any.fromList(['Public', 'Private']);
   this.projectName = projectNameAnswer;
+  this.projectDescription = 'some project description';
+  this.projectRoot = process.cwd();
 
   ({default: this.execa} = (await td.replaceEsm('@form8ion/execa-wrapper')));
   this.git = await td.replaceEsm('simple-git');
