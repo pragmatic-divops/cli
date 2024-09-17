@@ -67,7 +67,7 @@
     "@form8ion/config-file": "1.1.2",
     "@form8ion/core": "4.8.0",
     "@pragmatic-divops/commitlint-config": "1.0.61",
-    "@pragmatic-divops/eslint-config": "1.0.94",
+    "@pragmatic-divops/eslint-config": "1.0.95",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/remark-preset": "4.0.5",
     "@rollup/plugin-node-resolve": "15.2.3",
