@@ -5,7 +5,6 @@ import {
   scaffold as scaffoldRenovate
 } from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldCucumber} from '@form8ion/cucumber-scaffolder';
-import {test as jsApplicabilityTest} from '@form8ion/javascript';
 import * as githubWorkflowsPlugin from '@form8ion/github-actions-node-ci';
 import * as githubPlugin from '@form8ion/github';
 
@@ -13,6 +12,7 @@ import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
+import {javascriptPluginFactory} from '../../common/enhanced-plugins.js';
 import * as enhancedLifters from './enhanced-lifters.js';
 import {command, describe as commandDescription, handler} from './index.js';
 
@@ -20,6 +20,7 @@ describe('lift command', () => {
   beforeEach(() => {
     vi.mock('@form8ion/lift');
     vi.mock('./enhanced-lifters.js');
+    vi.mock('../../common/enhanced-plugins.js');
   });
 
   afterEach(() => {
@@ -31,6 +32,8 @@ describe('lift command', () => {
     const decisions = any.simpleObject();
     const codecovScaffolder = () => undefined;
     enhancedLifters.getEnhancedCodecovScaffolder.mockReturnValue(codecovScaffolder);
+    const javascriptPlugin = any.simpleObject();
+    when(javascriptPluginFactory).calledWith(decisions).mockReturnValue(javascriptPlugin);
     when(lifter.lift)
       .calledWith({
         decisions,
@@ -40,7 +43,7 @@ describe('lift command', () => {
           Codecov: codecovScaffolder
         },
         enhancers: {
-          JavaScript: {test: jsApplicabilityTest, lift: enhancedLifters.javascript},
+          JavaScript: javascriptPlugin,
           Renovate: {test: renovatePredicate, lift: liftRenovate},
           GitHub: githubPlugin,
           'GitHub Actions CI': githubWorkflowsPlugin

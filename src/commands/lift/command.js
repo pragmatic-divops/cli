@@ -1,15 +1,15 @@
 import {lift} from '@form8ion/lift';
 import {
   lift as liftRenovate,
-  test as renovatePredicate,
-  scaffold as scaffoldRenovate
+  scaffold as scaffoldRenovate,
+  test as renovatePredicate
 } from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldCucumber} from '@form8ion/cucumber-scaffolder';
-import {test as jsApplicabilityTest} from '@form8ion/javascript';
 import * as githubWorkflowsPlugin from '@form8ion/github-actions-node-ci';
 import * as githubPlugin from '@form8ion/github';
 
-import {getEnhancedCodecovScaffolder, javascript as liftJavascript} from './enhanced-lifters.js';
+import {getEnhancedCodecovScaffolder} from './enhanced-lifters.js';
+import {javascriptPluginFactory} from '../../common/enhanced-plugins.js';
 
 export function handler({decisions}) {
   return lift({
@@ -20,7 +20,7 @@ export function handler({decisions}) {
       Codecov: getEnhancedCodecovScaffolder()
     },
     enhancers: {
-      JavaScript: {test: jsApplicabilityTest, lift: liftJavascript},
+      JavaScript: javascriptPluginFactory(decisions),
       Renovate: {test: renovatePredicate, lift: liftRenovate},
       GitHub: githubPlugin,
       'GitHub Actions CI': githubWorkflowsPlugin
