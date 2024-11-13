@@ -30,7 +30,8 @@ Before(async function () {
   this.projectDescription = 'some project description';
   this.projectRoot = process.cwd();
 
-  ({default: this.execa} = (await td.replaceEsm('@form8ion/execa-wrapper')));
+  ({execa: this.execa} = (await td.replaceEsm('execa')));
+  await td.replaceEsm('@form8ion/execa-wrapper');
   this.git = await td.replaceEsm('simple-git');
   ({questionNames: projectQuestionNames} = await import('@form8ion/project'));
   ({questionNames: javascriptQuestionNames} = await import('@form8ion/javascript'));
