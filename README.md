@@ -84,14 +84,14 @@ $ npm test
 
 [coverage-link]: https://codecov.io/github/pragmatic-divops/cli
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/pragmatic-divops/cli.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/pragmatic-divops/cli?logo=codecov
 
 [license-link]: LICENSE
 
-[license-badge]: https://img.shields.io/github/license/pragmatic-divops/cli.svg
+[license-badge]: https://img.shields.io/github/license/pragmatic-divops/cli.svg?logo=opensourceinitiative
 
 [npm-link]: https://www.npmjs.com/package/@pragmatic-divops/cli
 
-[npm-badge]: https://img.shields.io/npm/v/@pragmatic-divops/cli.svg
+[npm-badge]: https://img.shields.io/npm/v/@pragmatic-divops/cli?logo=npm
 
 [slsa-badge]: https://slsa.dev/images/gh-badge-level2.svg
