@@ -37,7 +37,8 @@
     "pretest:e2e": "run-s build",
     "test:e2e": "node ./test/e2e/smoke-test.mjs",
     "prepare": "husky install",
-    "lint:js:fix": "run-s 'lint:js -- --fix'"
+    "lint:js:fix": "run-s 'lint:js -- --fix'",
+    "lint:publish": "publint --strict"
   },
   "files": [
     "bin/"
@@ -87,6 +88,7 @@
     "mock-fs": "5.4.1",
     "msw": "2.6.5",
     "npm-run-all2": "7.0.1",
+    "publint": "0.2.12",
     "remark-cli": "12.0.1",
     "remark-toc": "9.0.0",
     "rimraf": "6.0.1",
