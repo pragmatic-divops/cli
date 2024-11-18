@@ -6,6 +6,7 @@ cli for various organization tools
 
 [![Codecov][coverage-badge]][coverage-link]
 [![Node CI Workflow Status][github-actions-ci-badge]][github-actions-ci-link]
+![SLSA Level 2][slsa-badge]
 
 <!--status-badges end -->
 
@@ -92,3 +93,5 @@ $ npm test
 [npm-link]: https://www.npmjs.com/package/@pragmatic-divops/cli
 
 [npm-badge]: https://img.shields.io/npm/v/@pragmatic-divops/cli.svg
+
+[slsa-badge]: https://slsa.dev/images/gh-badge-level2.svg
