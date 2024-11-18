@@ -36,7 +36,8 @@
     "test:integration:focus": "run-s 'test:integration:base -- --profile focus'",
     "pretest:e2e": "run-s build",
     "test:e2e": "node ./test/e2e/smoke-test.mjs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:js:fix": "run-s 'lint:js -- --fix'"
   },
   "files": [
     "bin/"
