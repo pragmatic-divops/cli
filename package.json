@@ -59,7 +59,7 @@
     "@form8ion/javascript-core": "12.3.0",
     "@form8ion/lift": "11.0.0",
     "@form8ion/mocha-scaffolder": "6.0.0",
-    "@form8ion/project": "20.0.0",
+    "@form8ion/project": "21.0.0",
     "@form8ion/renovate-scaffolder": "3.0.0",
     "@travi/netlify-scaffolder": "1.6.0",
     "update-notifier": "7.3.1",
