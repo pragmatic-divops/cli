@@ -34,6 +34,7 @@ Given(/^the project language should be JavaScript$/, async function () {
   error.command = 'npm ls husky --json';
 
   td.when(this.execa('npm', ['ls', 'husky', '--json'])).thenReject(error);
+  td.when(this.execa('npm', ['--version'])).thenResolve({stdout: any.word()});
 });
 
 Given(/^nvm is properly configured$/, function () {
