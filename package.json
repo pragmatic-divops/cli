@@ -69,7 +69,7 @@
     "@cucumber/cucumber": "11.2.0",
     "@form8ion/config-file": "1.3.0",
     "@form8ion/core": "4.8.0",
-    "@pragmatic-divops/commitlint-config": "1.0.65",
+    "@pragmatic-divops/commitlint-config": "1.0.66",
     "@pragmatic-divops/eslint-config": "1.0.96",
     "@pragmatic-divops/eslint-config-cucumber": "1.0.1",
     "@pragmatic-divops/remark-preset": "4.0.8",
