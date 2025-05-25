@@ -12,6 +12,7 @@
     "pragmatic-divops": "./bin/pragmatic-divops.js"
   },
   "scripts": {
+    "pretest": "run-s build",
     "test": "npm-run-all --print-label --parallel lint:* --parallel test:*",
     "lint:lockfile": "lockfile-lint",
     "lint:js": "eslint . --cache",
