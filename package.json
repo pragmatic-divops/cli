@@ -7,7 +7,7 @@
   "author": "Matt Travi <npm@travi.org> (https://matt.travi.org/)",
   "repository": "pragmatic-divops/cli",
   "bugs": "https://github.com/pragmatic-divops/cli/issues",
-  "homepage": "https://github.com/pragmatic-divops/cli#readme",
+  "homepage": "https://npm.im/@pragmatic-divops/cli",
   "bin": {
     "pragmatic-divops": "./bin/pragmatic-divops.js"
   },
