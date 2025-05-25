@@ -83,6 +83,13 @@ Given(/^the GitHub token is valid$/, async function () {
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
+    }),
+    http.get('https://api.github.com/orgs/pragmatic-divops/teams', ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        return HttpResponse.json([{name: 'maintainers', slug: 'maintainers', id: 3208999}]);
+      }
+
+      return undefined;
     })
   );
 });
