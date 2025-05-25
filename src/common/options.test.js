@@ -6,7 +6,7 @@ import * as githubPlugin from '@form8ion/github';
 
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import {javascriptPluginFactory} from './enhanced-plugins.js';
 import {defineDecisions, defineScaffoldOptions} from './options.js';
@@ -49,7 +49,7 @@ describe('options', () => {
   it('should define the scaffold options', () => {
     const decisions = any.simpleObject();
     const jsPlugin = any.simpleObject();
-    when(javascriptPluginFactory).calledWith(decisions).mockReturnValue(jsPlugin);
+    when(javascriptPluginFactory).calledWith(decisions).thenReturn(jsPlugin);
 
     expect(defineScaffoldOptions(decisions)).toEqual({
       plugins: {

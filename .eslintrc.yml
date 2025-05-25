@@ -3,6 +3,7 @@ root: true
 extends:
   - '@pragmatic-divops'
   - '@pragmatic-divops/cucumber'
+  - '@form8ion/vitest'
 
 parserOptions:
   ecmaVersion: 2022

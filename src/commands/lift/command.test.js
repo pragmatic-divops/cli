@@ -10,7 +10,7 @@ import * as githubPlugin from '@form8ion/github';
 
 import {describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import {javascriptPluginFactory} from '../../common/enhanced-plugins.js';
 import * as enhancedLifters from './enhanced-lifters.js';
@@ -27,7 +27,7 @@ describe('lift command', () => {
     const codecovScaffolder = () => undefined;
     enhancedLifters.getEnhancedCodecovScaffolder.mockReturnValue(codecovScaffolder);
     const javascriptPlugin = any.simpleObject();
-    when(javascriptPluginFactory).calledWith(decisions).mockReturnValue(javascriptPlugin);
+    when(javascriptPluginFactory).calledWith(decisions).thenReturn(javascriptPlugin);
     when(lifter.lift)
       .calledWith({
         decisions,
@@ -43,7 +43,7 @@ describe('lift command', () => {
           'GitHub Actions CI': githubWorkflowsPlugin
         }
       })
-      .mockResolvedValue(liftingResults);
+      .thenResolve(liftingResults);
 
     expect(await handler({decisions})).toEqual(liftingResults);
     expect(command).toEqual('lift');

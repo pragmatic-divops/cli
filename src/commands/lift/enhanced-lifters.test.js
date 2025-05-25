@@ -3,7 +3,7 @@ import * as codecovPlugin from '@form8ion/codecov';
 
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import {getEnhancedCodecovScaffolder, javascript} from './enhanced-lifters.js';
 
@@ -36,14 +36,14 @@ describe('enhanced lifters', () => {
           packageName: `${packageScope}/commitlint-config`
         }
       }
-    }).mockResolvedValue(results);
+    }).thenResolve(results);
 
     expect(await javascript(options)).toEqual(results);
   });
 
   it('should set the visibility to `Public` for Codecov since all projects in this org are public', async () => {
     const scaffolder = getEnhancedCodecovScaffolder();
-    when(codecovPlugin.scaffold).calledWith({...options, visibility: 'Public'}).mockResolvedValue(results);
+    when(codecovPlugin.scaffold).calledWith({...options, visibility: 'Public'}).thenResolve(results);
 
     expect(await scaffolder(options)).toEqual(results);
   });

@@ -7,7 +7,7 @@ import * as netlifyPlugin from '@travi/netlify-scaffolder';
 
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import {javascriptScaffolderFactory} from './enhanced-scaffolders.js';
 
@@ -41,7 +41,7 @@ describe('enhanced scaffolders', () => {
         unitTestFrameworks: {mocha: mochaPlugin}
       },
       decisions
-    }).mockResolvedValue(output);
+    }).thenResolve(output);
 
     expect(await javascriptScaffolderFactory(decisions)(options)).toEqual(output);
   });
