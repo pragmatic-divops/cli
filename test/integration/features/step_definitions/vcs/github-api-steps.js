@@ -37,9 +37,7 @@ Given(/^the GitHub token is valid$/, async function () {
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
-    })
-  );
-  server.use(
+    }),
     http.post('https://api.github.com/orgs/pragmatic-divops/repos', async ({request}) => {
       if (
         authorizationHeaderIncludesToken(request)
@@ -52,9 +50,14 @@ Given(/^the GitHub token is valid$/, async function () {
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
-    })
-  );
-  server.use(
+    }),
+    http.get('https://api.github.com/search/issues', ({request}) => {
+      if (authorizationHeaderIncludesToken(request)) {
+        return HttpResponse.json({items: []});
+      }
+
+      return undefined;
+    }),
     http.post(`https://api.github.com/repos/pragmatic-divops/${this.projectName}/issues`, async ({request}) => {
       if (authorizationHeaderIncludesToken(request)) {
         this.nextStepsFiledOnGithub.push(await request.json());
@@ -66,18 +69,14 @@ Given(/^the GitHub token is valid$/, async function () {
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
-    })
-  );
-  server.use(
+    }),
     http.get('https://api.github.com/user', ({request}) => {
       if (authorizationHeaderIncludesToken(request)) {
         return HttpResponse.json({login: this.githubUser});
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});
-    })
-  );
-  server.use(
+    }),
     http.get('https://api.github.com/user/orgs', ({request}) => {
       if (authorizationHeaderIncludesToken(request)) {
         return HttpResponse.json([{login: 'pragmatic-divops'}]);
