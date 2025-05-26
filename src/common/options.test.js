@@ -1,34 +1,23 @@
-import {composeDependenciesInto} from '@form8ion/core';
-import {logger} from '@form8ion/cli-core';
 import {octokit} from '@form8ion/github-core';
 import {questionNames as projectQuestionNames} from '@form8ion/project';
 import {questionNames as jsQuestionNames} from '@form8ion/javascript';
 import {packageManagers} from '@form8ion/javascript-core';
-import * as renovatePlugin from '@form8ion/renovate-scaffolder';
 import * as githubPlugin from '@form8ion/github';
 
-import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
+import {describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'vitest-when';
 
-import {github as githubPrompt} from './prompts.js';
-import {javascriptPluginFactory} from './enhanced-plugins.js';
+import projectPlugins from './plugins.js';
 import {defineDecisions, defineScaffoldOptions} from './options.js';
 
 vi.mock('@form8ion/core');
 vi.mock('@form8ion/github-core');
+vi.mock('./plugins.js');
 
 describe('options', () => {
   const traviName = 'Matt Travi';
   const orgName = 'pragmatic-divops';
-
-  beforeEach(() => {
-    vi.mock('./enhanced-plugins.js');
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
 
   it('should define the decisions', () => {
     const providedDecisions = any.simpleObject();
@@ -55,32 +44,13 @@ describe('options', () => {
 
   it('should define the scaffold options', () => {
     const decisions = any.simpleObject();
-    const jsPlugin = any.simpleObject();
-    const enhancedGithubScaffolder = () => undefined;
-    const enhancedGithubLifter = () => undefined;
     const octokitInstance = any.simpleObject();
-    const githubPluginDependencies = {logger, prompt: githubPrompt, octokit: octokitInstance};
-    when(javascriptPluginFactory).calledWith(decisions).thenReturn(jsPlugin);
+    const projectPluginGroups = any.objectWithKeys(any.listOf(any.word), {factory: any.simpleObject});
+    when(projectPlugins).calledWith(decisions).thenReturn(projectPluginGroups);
     when(octokit.getNetrcAuthenticatedInstance).calledWith().thenReturn(octokitInstance);
-    when(composeDependenciesInto)
-      .calledWith(githubPlugin.scaffold, githubPluginDependencies)
-      .thenReturn(enhancedGithubScaffolder);
-    when(composeDependenciesInto)
-      .calledWith(githubPlugin.lift, githubPluginDependencies)
-      .thenReturn(enhancedGithubLifter);
 
     expect(defineScaffoldOptions(decisions)).toEqual({
-      plugins: {
-        languages: {JavaScript: jsPlugin},
-        vcsHosts: {
-          GitHub: {
-            ...githubPlugin,
-            scaffold: enhancedGithubScaffolder,
-            lift: enhancedGithubLifter
-          }
-        },
-        dependencyUpdaters: {Renovate: renovatePlugin}
-      },
+      plugins: projectPluginGroups,
       decisions
     });
   });

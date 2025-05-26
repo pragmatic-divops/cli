@@ -1,33 +1,31 @@
+import {ungroupObject} from '@form8ion/core';
 import * as lifter from '@form8ion/lift';
-import {
-  lift as liftRenovate,
-  scaffold as scaffoldRenovate,
-  test as renovatePredicate
-} from '@form8ion/renovate-scaffolder';
+import {scaffold as scaffoldRenovate} from '@form8ion/renovate-scaffolder';
 import {scaffold as scaffoldCucumber} from '@form8ion/cucumber-scaffolder';
-import * as githubWorkflowsPlugin from '@form8ion/github-actions-node-ci';
-import * as githubPlugin from '@form8ion/github';
 
 import {describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'vitest-when';
 
-import {javascriptPluginFactory} from '../../common/enhanced-plugins.js';
+import projectPlugins from '../../common/plugins.js';
 import * as enhancedLifters from './enhanced-lifters.js';
 import {command, describe as commandDescription, handler} from './index.js';
 
+vi.mock('@form8ion/core');
 vi.mock('@form8ion/lift');
+vi.mock('../../common/plugins.js');
 vi.mock('./enhanced-lifters.js');
-vi.mock('../../common/enhanced-plugins.js');
 
 describe('lift command', () => {
   it('should define the lift command', async () => {
     const liftingResults = any.simpleObject();
     const decisions = any.simpleObject();
     const codecovScaffolder = () => undefined;
+    const projectPluginGroups = any.objectWithKeys(any.listOf(any.word), {factory: any.simpleObject});
+    const ungroupedPlugins = any.simpleObject();
+    when(projectPlugins).calledWith({}).thenReturn(projectPluginGroups);
+    when(ungroupObject).calledWith(projectPluginGroups).thenReturn(ungroupedPlugins);
     enhancedLifters.getEnhancedCodecovScaffolder.mockReturnValue(codecovScaffolder);
-    const javascriptPlugin = any.simpleObject();
-    when(javascriptPluginFactory).calledWith(decisions).thenReturn(javascriptPlugin);
     when(lifter.lift)
       .calledWith({
         decisions,
@@ -36,12 +34,7 @@ describe('lift command', () => {
           Cucumber: scaffoldCucumber,
           Codecov: codecovScaffolder
         },
-        enhancers: {
-          JavaScript: javascriptPlugin,
-          Renovate: {test: renovatePredicate, lift: liftRenovate},
-          GitHub: githubPlugin,
-          'GitHub Actions CI': githubWorkflowsPlugin
-        }
+        enhancers: ungroupedPlugins
       })
       .thenResolve(liftingResults);
 

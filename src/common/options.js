@@ -1,14 +1,9 @@
-import {composeDependenciesInto} from '@form8ion/core';
-import {logger} from '@form8ion/cli-core';
-import {octokit} from '@form8ion/github-core';
 import {packageManagers} from '@form8ion/javascript-core';
-import * as renovatePlugin from '@form8ion/renovate-scaffolder';
 import * as githubPlugin from '@form8ion/github';
 import {questionNames as projectQuestionNames} from '@form8ion/project';
 import {questionNames as jsQuestionNames} from '@form8ion/javascript';
 
-import {github as githubPrompt} from './prompts.js';
-import {javascriptPluginFactory} from './enhanced-plugins.js';
+import projectPlugins from './plugins.js';
 
 const traviName = 'Matt Travi';
 const orgName = 'pragmatic-divops';
@@ -33,21 +28,8 @@ export function defineDecisions(providedDecisions) {
 }
 
 export function defineScaffoldOptions(decisions) {
-  const octokitInstance = octokit.getNetrcAuthenticatedInstance();
-  const githubPluginDependencies = {logger, prompt: githubPrompt, octokit: octokitInstance};
-
   return {
-    plugins: {
-      languages: {JavaScript: javascriptPluginFactory(decisions)},
-      vcsHosts: {
-        GitHub: {
-          ...githubPlugin,
-          scaffold: composeDependenciesInto(githubPlugin.scaffold, githubPluginDependencies),
-          lift: composeDependenciesInto(githubPlugin.lift, githubPluginDependencies)
-        }
-      },
-      dependencyUpdaters: {Renovate: renovatePlugin}
-    },
+    plugins: projectPlugins(decisions),
     decisions
   };
 }
