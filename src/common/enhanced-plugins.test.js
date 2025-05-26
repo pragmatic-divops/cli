@@ -10,6 +10,7 @@ import {describe, vi, it, expect} from 'vitest';
 
 import {github as githubPrompt} from './prompts.js';
 import {javascriptScaffolderFactory} from '../commands/scaffold/enhanced-scaffolders.js';
+import {javascript as enhancedLiftJavascript} from '../commands/lift/enhanced-lifters.js';
 import {javascriptPluginFactory, githubPluginFactory} from './enhanced-plugins.js';
 
 vi.mock('@form8ion/core');
@@ -24,7 +25,7 @@ describe('enhanced plugins', () => {
 
     expect(await javascriptPluginFactory(decisions))
       // eslint-disable-next-line prefer-object-spread
-      .toEqual(Object.assign({}, javascriptPlugin, {scaffold: enhancedScaffolder}));
+      .toEqual(Object.assign({}, javascriptPlugin, {scaffold: enhancedScaffolder, lift: enhancedLiftJavascript}));
   });
 
   it('should inject dependencies into the github plugin', async () => {

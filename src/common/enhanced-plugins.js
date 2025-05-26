@@ -6,11 +6,13 @@ import * as githubPlugin from '@form8ion/github';
 
 import {github as githubPrompt} from './prompts.js';
 import {javascriptScaffolderFactory} from '../commands/scaffold/enhanced-scaffolders.js';
+import {javascript as enhancedLiftJavascript} from '../commands/lift/enhanced-lifters.js';
 
 export function javascriptPluginFactory(decisions) {
   return {
     ...javascriptPlugin,
-    scaffold: javascriptScaffolderFactory(decisions)
+    scaffold: javascriptScaffolderFactory(decisions),
+    lift: enhancedLiftJavascript
   };
 }
 
