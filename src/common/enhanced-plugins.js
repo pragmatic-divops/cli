@@ -5,7 +5,7 @@ import * as javascriptPlugin from '@form8ion/javascript';
 import * as githubPlugin from '@form8ion/github';
 
 import {github as githubPrompt} from './prompts.js';
-import {javascriptScaffolderFactory} from './enhanced-scaffolders.js';
+import {javascriptScaffolderFactory} from '../commands/scaffold/enhanced-scaffolders.js';
 
 export function javascriptPluginFactory(decisions) {
   return {

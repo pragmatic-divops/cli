@@ -9,12 +9,12 @@ import {when} from 'vitest-when';
 import {describe, vi, it, expect} from 'vitest';
 
 import {github as githubPrompt} from './prompts.js';
-import {javascriptScaffolderFactory} from './enhanced-scaffolders.js';
+import {javascriptScaffolderFactory} from '../commands/scaffold/enhanced-scaffolders.js';
 import {javascriptPluginFactory, githubPluginFactory} from './enhanced-plugins.js';
 
 vi.mock('@form8ion/core');
 vi.mock('@form8ion/github-core');
-vi.mock('./enhanced-scaffolders.js');
+vi.mock('../commands/scaffold/enhanced-scaffolders.js');
 
 describe('enhanced plugins', () => {
   it('should pass the custom properties along with the provided options to the js plugin', async () => {
