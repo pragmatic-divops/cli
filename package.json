@@ -103,6 +103,6 @@
     "rollup-plugin-executable": "1.6.3",
     "testdouble": "3.20.2",
     "vitest": "3.2.1",
-    "vitest-when": "0.6.0"
+    "vitest-when": "0.6.1"
   }
 }
