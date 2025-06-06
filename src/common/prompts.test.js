@@ -14,13 +14,37 @@ const {
 } = githubPromptConstants.questionNames;
 
 const anyTeam = () => ({name: any.word(), value: any.integer(), short: any.word()});
+const anyOrganization = () => {
+  const login = any.word();
+
+  return ({name: login, value: any.integer(), short: login});
+};
 const anyQuestion = () => ({type: any.word()});
 
 describe('prompts', () => {
   describe('github', () => {
-    it('should define the `form8ion` organization as the github account', async () => {
-      expect(github({id: githubPromptConstants.ids.GITHUB_DETAILS, questions: any.listOf(anyQuestion)}))
-        .toEqual({[githubDetailsPromptQuestionNames.GITHUB_ACCOUNT]: 'pragmatic-divops'});
+    it('should define the `pragmatic-divops` organization as the github account', async () => {
+      const pragmaticDivopsOrganizationId = 69399856;
+
+      expect(github({
+        id: githubPromptConstants.ids.GITHUB_DETAILS,
+        questions: [
+          ...any.listOf(anyQuestion),
+          {
+            name: githubDetailsPromptQuestionNames.ORGANIZATION,
+            type: 'list',
+            choices: [
+              ...any.listOf(anyOrganization),
+              {name: 'pragmatic-divops', value: pragmaticDivopsOrganizationId, short: 'pragmatic-divops'},
+              ...any.listOf(anyOrganization)
+            ]
+          },
+          ...any.listOf(anyQuestion)
+        ]
+      })).toEqual({
+        [githubDetailsPromptQuestionNames.ACCOUNT_TYPE]: 'organization',
+        [githubDetailsPromptQuestionNames.ORGANIZATION]: pragmaticDivopsOrganizationId
+      });
     });
 
     it('should confirm that repository admin settings should be managed as code', async () => {

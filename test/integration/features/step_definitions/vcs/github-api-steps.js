@@ -79,7 +79,11 @@ Given(/^the GitHub token is valid$/, async function () {
     }),
     http.get('https://api.github.com/user/orgs', ({request}) => {
       if (authorizationHeaderIncludesToken(request)) {
-        return HttpResponse.json([{login: 'pragmatic-divops'}]);
+        return HttpResponse.json([
+          ...any.listOf(() => ({login: any.word(), id: any.integer()})),
+          {login: 'pragmatic-divops', id: 69399856},
+          ...any.listOf(() => ({login: any.word(), id: any.integer()}))
+        ]);
       }
 
       return new HttpResponse(null, {status: StatusCodes.UNAUTHORIZED});

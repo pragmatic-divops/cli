@@ -9,7 +9,13 @@ const {
 export function github({id, questions}) {
   switch (id) {
     case githubPromptConstants.ids.GITHUB_DETAILS:
-      return {[githubDetailsPromptQuestionNames.GITHUB_ACCOUNT]: 'pragmatic-divops'};
+      return {
+        [githubDetailsPromptQuestionNames.ACCOUNT_TYPE]: 'organization',
+        [githubDetailsPromptQuestionNames.ORGANIZATION]: questions
+          .find(({name}) => name === githubDetailsPromptQuestionNames.ORGANIZATION)
+          .choices
+          .find(({name}) => 'pragmatic-divops' === name).value
+      };
     case githubPromptConstants.ids.ADMIN_SETTINGS:
       return {[repositoryAdminSettingsPromptQuestionNames.SETTINGS_MANAGED_AS_CODE]: true};
     case githubPromptConstants.ids.REQUIRED_CHECK_BYPASS:
