@@ -102,7 +102,7 @@
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-executable": "1.6.3",
     "testdouble": "3.20.2",
-    "vitest": "4.0.12",
+    "vitest": "4.0.13",
     "vitest-when": "0.10.0"
   }
 }
