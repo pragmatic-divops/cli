@@ -12,5 +12,6 @@ export default {
     executable(),
     nodeResolve({mainFields: ['module']})
   ],
+  external: ['yargs/helpers'],
   output: [{file: 'bin/pragmatic-divops.js', format: 'esm', sourcemap: true, banner: '#!/usr/bin/env node'}]
 };
